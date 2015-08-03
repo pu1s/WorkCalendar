@@ -23,7 +23,7 @@ namespace WorkCalendarCoreLibrary.Core
         /// <summary>
         /// Рабочий день
         /// </summary>
-        WorkDay,
+        WorkDay = 0,
 
         /// <summary>
         /// Короткий день
@@ -125,5 +125,25 @@ namespace WorkCalendarCoreLibrary.Core
 
         #endregion
 
+        #region Конструкторы
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="calendarDayDate">Дата календарного дня</param>
+        /// <param name="calendarWorkDayAttribute">Аттрибуты календарного дня</param>
+        /// <param name="calendarDayDescription">Расшифровка параметров календарного дня</param>
+        /// <param name="calendarDayComment">Комментарий</param>
+        public CalendarDay(DateTime calendarDayDate, WorkDayAttribute calendarWorkDayAttribute,
+            CalendarDayDescription calendarDayDescription, string calendarDayComment): this()
+        {
+            // Присваеваем полям значения 
+            _dayDate = calendarDayDate;
+            _dayAttribute = calendarWorkDayAttribute;
+            _dayDescription = calendarDayDescription;
+            // Если комментарий не указан полю присваиватся пустая строка
+            _calendarDayComment = string.IsNullOrEmpty(calendarDayComment) ? string.Empty : calendarDayComment;
+        }
+
+        #endregion
     }
 }
