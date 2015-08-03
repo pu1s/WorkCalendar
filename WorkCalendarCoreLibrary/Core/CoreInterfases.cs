@@ -89,6 +89,9 @@ namespace WorkCalendarCoreLibrary.Core
 
     #endregion
 
+    /// <summary>
+    /// Базовая структура, описывающая календарный день
+    /// </summary>
     public struct CalendarDay : ICalendarDay
     {
         #region Поля
