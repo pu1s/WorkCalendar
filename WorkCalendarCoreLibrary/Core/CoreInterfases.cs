@@ -160,9 +160,15 @@ namespace WorkCalendarCoreLibrary.Core
             _calendarDayDate = calendarDayDate;
             // Расчитываем аттрибуты календарного дня
             _calendarDayAttribute = CalculateWorkDayAttribute(_calendarDayDate);
+            // Расчитываем описание дня
+            _calendarDayDescription = CalculateWorkDayDescription(_calendarDayDate);
         }
 
         #endregion
+
+
+        #region Методы
+
         /// <summary>
         /// Расчет аттрибутов календарного дня по умолчанию
         /// </summary>
@@ -177,5 +183,12 @@ namespace WorkCalendarCoreLibrary.Core
                 // иначе вернем рабочий день
                 : WorkDayAttribute.WorkDay;
         }
+
+        private CalendarDayDescription CalculateWorkDayDescription(DateTime calendarDayDate)
+        {
+            
+        }
+        #endregion
+
     }
 }
