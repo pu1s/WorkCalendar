@@ -175,5 +175,29 @@ namespace WorkCalendarCoreLibrary.Core
         }
 
         #endregion
+
+        #region Методы
+
+        /// <summary>
+        /// Изменяет аттрибут ралендарного лня календаря
+        /// </summary>
+        /// <param name="calendarWorkDayAttribute">Аттрибут календарного дня</param>
+        public void ChangeCalendarDayAttribute(WorkDayAttribute calendarWorkDayAttribute)
+        {
+            _calendarDayAttribute = calendarWorkDayAttribute;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="calendarDayDescription"></param>
+        public void ChaingeCaledarDayDescription(CalendarDayDescription calendarDayDescription)
+        {
+            _calendarDayDescription = calendarDayDescription;
+        }
+
+        #endregion
+
     }
 }
