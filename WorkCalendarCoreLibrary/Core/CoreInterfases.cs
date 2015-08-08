@@ -18,7 +18,7 @@ namespace WorkCalendarCoreLibrary.Core
     /// <summary>
     /// Перечисление состояния рабочих дней
     /// </summary>
-    public enum WorkDayAttribute : int
+    public enum WorkDayAttribute
     {
         /// <summary>
         /// Рабочий день
@@ -39,7 +39,7 @@ namespace WorkCalendarCoreLibrary.Core
     /// <summary>
     /// Перечисление состояния календарного дня
     /// </summary>
-    public enum CalendarDayDescription : int
+    public enum CalendarDayDescription
     {
         /// <summary>
         /// Обычный день
@@ -85,6 +85,7 @@ namespace WorkCalendarCoreLibrary.Core
         /// Комментарий для календарного дня
         /// </summary>
         string CalendarDayComment { get; set; }
+       
     }
 
     #endregion
@@ -100,7 +101,7 @@ namespace WorkCalendarCoreLibrary.Core
         private WorkDayAttribute _dayAttribute;
         private CalendarDayDescription _dayDescription;
         private string _calendarDayComment;
-
+        
         #endregion
 
         #region Свойства
@@ -130,7 +131,7 @@ namespace WorkCalendarCoreLibrary.Core
 
         #region Конструкторы
         /// <summary>
-        /// Конструктор
+        /// Базовый конструктор
         /// </summary>
         /// <param name="calendarDayDate">Дата календарного дня</param>
         /// <param name="calendarWorkDayAttribute">Аттрибуты календарного дня</param>
@@ -147,6 +148,54 @@ namespace WorkCalendarCoreLibrary.Core
             _calendarDayComment = string.IsNullOrEmpty(calendarDayComment) ? string.Empty : calendarDayComment;
         }
 
+        /// <summary>
+        /// Конструктор по дате календарного дня
+        /// </summary>
+        /// <param name="calendarDayDate">Дата</param>
+        public CalendarDay(DateTime calendarDayDate) : this()
+        {
+            // Присваеваем дату календарного дня
+            _dayDate = calendarDayDate;
+            // Вычисляем аттрибуты календарного дня в календаре по умолчанию
+            // Если этот день суббота или воскресенье, считаем его не рабочим днем
+            _dayAttribute = calendarDayDate.DayOfWeek == DayOfWeek.Saturday &&
+                            calendarDayDate.DayOfWeek == DayOfWeek.Sunday
+                ? WorkDayAttribute.UnWorkDay
+                // В противном случае день - рабочий
+                : WorkDayAttribute.WorkDay;
+            //
+            // Вычисляем аннотации к календарному дню
+            // В процессе разработки
+            _dayDescription = CalendarDayDescription.OrdinaryDay;
+            // Комметарии в этом случае "пустые"
+            _calendarDayComment = string.Empty;
+        }
+
         #endregion
+
+
+        #region Методы
+
+        /// <summary>
+        /// Изменяет аттрибут ралендарного лня календаря
+        /// </summary>
+        /// <param name="calendarWorkDayAttribute">Аттрибут календарного дня</param>
+        public void ChangeCalendarDayAttribute(WorkDayAttribute calendarWorkDayAttribute)
+        {
+            _dayAttribute = calendarWorkDayAttribute;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="calendarDayDescription"></param>
+        public void ChaingeCaledarDayDescription(CalendarDayDescription calendarDayDescription)
+        {
+            _dayDescription = calendarDayDescription;
+        }
+        #endregion
+
+
     }
 }
