@@ -18,7 +18,7 @@ namespace WorkCalendarCoreLibrary.Core
     /// <summary>
     /// Перечисление состояния рабочих дней
     /// </summary>
-    public enum WorkDayAttribute
+    public enum WorkDayAttribute : int
     {
         /// <summary>
         /// Рабочий день
@@ -39,7 +39,7 @@ namespace WorkCalendarCoreLibrary.Core
     /// <summary>
     /// Перечисление состояния календарного дня
     /// </summary>
-    public enum CalendarDayDescription
+    public enum CalendarDayDescription : int
     {
         /// <summary>
         /// Обычный день
@@ -97,28 +97,30 @@ namespace WorkCalendarCoreLibrary.Core
     {
         #region Поля
 
-        private DateTime _dayDate;
-        private WorkDayAttribute _dayAttribute;
-        private CalendarDayDescription _dayDescription;
+        private DateTime _calendarDayDate;
+        private WorkDayAttribute _calendarDayAttribute;
+        private CalendarDayDescription _calendarDayDescription;
         private string _calendarDayComment;
-        
+
         #endregion
 
+  
+    
         #region Свойства
 
         public DateTime CalendarDayDate
         {
-            get { return _dayDate; }
+            get { return _calendarDayDate; }
         }
 
         public WorkDayAttribute CalendarDayAttribute
         {
-            get { return _dayAttribute; }
+            get { return _calendarDayAttribute; }
         }
 
         public CalendarDayDescription CalendarDayDescription
         {
-            get { return _dayDescription; }
+            get { return _calendarDayDescription; }
         }
 
         public string CalendarDayComment
@@ -133,19 +135,32 @@ namespace WorkCalendarCoreLibrary.Core
         /// <summary>
         /// Базовый конструктор
         /// </summary>
-        /// <param name="calendarDayDate">Дата календарного дня</param>
-        /// <param name="calendarWorkDayAttribute">Аттрибуты календарного дня</param>
-        /// <param name="calendarDayDescription">Расшифровка параметров календарного дня</param>
+        /// <param name="calendarCalendarDayDate">Дата календарного дня</param>
+        /// <param name="calendarWorkCalendarDayAttribute">Аттрибуты календарного дня</param>
+        /// <param name="calendarCalendarDayDescription">Расшифровка параметров календарного дня</param>
         /// <param name="calendarDayComment">Комментарий</param>
-        public CalendarDay(DateTime calendarDayDate, WorkDayAttribute calendarWorkDayAttribute,
-            CalendarDayDescription calendarDayDescription, string calendarDayComment): this()
+        public CalendarDay(DateTime calendarCalendarDayDate, WorkDayAttribute calendarWorkCalendarDayAttribute,
+            CalendarDayDescription calendarCalendarDayDescription, string calendarDayComment): this()
         {
             // Присваеваем полям значения 
-            _dayDate = calendarDayDate;
-            _dayAttribute = calendarWorkDayAttribute;
-            _dayDescription = calendarDayDescription;
+            _calendarDayDate = calendarCalendarDayDate;
+            _calendarDayAttribute = calendarWorkCalendarDayAttribute;
+            _calendarDayDescription = calendarCalendarDayDescription;
             // Если комментарий не указан полю присваиватся пустая строка
             _calendarDayComment = string.IsNullOrEmpty(calendarDayComment) ? string.Empty : calendarDayComment;
+        }
+        /// <summary>
+        /// Конструктор с датой календарного дня
+        /// </summary>
+        /// <param name="calendarDayDate">Дата</param>
+        public CalendarDay(DateTime calendarDayDate) : this()
+        {
+            // Присваеваем полям значения по умолчанию
+            _calendarDayDate = calendarDayDate;
+            // Расчитываем аттрибуты календарного дня
+            _calendarDayAttribute = CalculateWorkDayAttribute(_calendarDayDate);
+            // Расчитываем описание дня
+            _calendarDayDescription = CalculateWorkDayDescription(_calendarDayDate);
         }
 
         /// <summary>
@@ -172,30 +187,5 @@ namespace WorkCalendarCoreLibrary.Core
         }
 
         #endregion
-
-
-        #region Методы
-
-        /// <summary>
-        /// Изменяет аттрибут ралендарного лня календаря
-        /// </summary>
-        /// <param name="calendarWorkDayAttribute">Аттрибут календарного дня</param>
-        public void ChangeCalendarDayAttribute(WorkDayAttribute calendarWorkDayAttribute)
-        {
-            _dayAttribute = calendarWorkDayAttribute;
-        }
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="calendarDayDescription"></param>
-        public void ChaingeCaledarDayDescription(CalendarDayDescription calendarDayDescription)
-        {
-            _dayDescription = calendarDayDescription;
-        }
-        #endregion
-
-
     }
 }
