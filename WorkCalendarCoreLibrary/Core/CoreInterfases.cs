@@ -200,4 +200,12 @@ namespace WorkCalendarCoreLibrary.Core
         #endregion
 
     }
+
+    public static class CalendarDayHandle
+    {
+        public static int SetCalendarDayHandle(DateTime date)
+        {
+            return ((date.Year*1000) + date.DayOfYear);
+        }
+    }
 }
