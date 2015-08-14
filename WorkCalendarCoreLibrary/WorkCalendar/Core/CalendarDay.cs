@@ -105,7 +105,7 @@ namespace AGSoft
             public CalendarDay(DateTime calendarCalendarDayDate) : this()
             {
                 // Вычисляем индентификатор календарного дня
-                WorkCalendar.Core.CalendarDayHandle.SetCalendarDayHandle(calendarCalendarDayDate);
+                _calendarDayHandle = WorkCalendar.Core.CalendarDayHandle.SetCalendarDayHandle(calendarCalendarDayDate);
                 // Присваеваем дату календарного дня
                 _calendarDayDate = calendarCalendarDayDate;
                 // Вычисляем аттрибуты календарного дня в календаре по умолчанию
