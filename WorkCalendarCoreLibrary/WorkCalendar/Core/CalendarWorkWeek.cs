@@ -1,4 +1,4 @@
-namespace AGSoft.Core
+namespace AGSoft.WorkCalendar.Core
 {
     /// <summary>
     /// 

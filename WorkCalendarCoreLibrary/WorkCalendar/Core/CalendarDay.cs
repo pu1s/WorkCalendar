@@ -9,7 +9,7 @@
 #define DEBUG
 #define TRIAL
 using System;
-using AGSoft.Core;
+using AGSoft.WorkCalendar;
 
 // ReSharper disable once CheckNamespace
 namespace AGSoft
@@ -87,7 +87,7 @@ namespace AGSoft
                 CalendarDayDescription calendarCalendarDayDescription, string calendarDayComment) : this()
             {
                 // Вычисляем индентификатор календарного дня
-                _calendarDayHandle = AGSoft.Core.CalendarDayHandle.SetCalendarDayHandle(calendarCalendarDayDate);
+                _calendarDayHandle = AGSoft.WorkCalendar.CalendarDayHandle.SetCalendarDayHandle(calendarCalendarDayDate);
                 // Присваеваем полям значения 
                 _calendarDayDate = calendarCalendarDayDate;
                 _calendarDayAttribute = calendarWorkCalendarDayAttribute;
@@ -105,7 +105,7 @@ namespace AGSoft
             public CalendarDay(DateTime calendarCalendarDayDate) : this()
             {
                 // Вычисляем индентификатор календарного дня
-                _calendarDayHandle = AGSoft.Core.CalendarDayHandle.SetCalendarDayHandle(calendarCalendarDayDate);
+                _calendarDayHandle = AGSoft.WorkCalendar.CalendarDayHandle.SetCalendarDayHandle(calendarCalendarDayDate);
                 // Присваеваем дату календарного дня
                 _calendarDayDate = calendarCalendarDayDate;
                 // Вычисляем аттрибуты календарного дня в календаре по умолчанию

@@ -1,6 +1,6 @@
 using System;
 
-namespace AGSoft.Core
+namespace AGSoft.WorkCalendar
 {
     /// <summary>
     /// »нтерфейс, определ€ющий календарный день

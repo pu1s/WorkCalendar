@@ -1,4 +1,4 @@
-namespace AGSoft.Core
+namespace AGSoft.WorkCalendar
 {
     /// <summary>
     /// Перечисление состояния рабочих дней
