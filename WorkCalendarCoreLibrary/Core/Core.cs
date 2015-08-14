@@ -91,7 +91,9 @@ namespace AGSoft
             /// Комментарий для календарного дня
             /// </summary>
             string CalendarDayComment { get; set; }
-
+            /// <summary>
+            /// Уникальный индентификатор календарного дня
+            /// </summary>
             int CalendarDayHandle { get; }
 
         }
@@ -175,6 +177,7 @@ namespace AGSoft
             /// <param name="calendarCalendarDayDate">Дате</param>
             public CalendarDay(DateTime calendarCalendarDayDate) : this()
             {
+                // Вычисляем индентификатор календарного дня
                 _calendarDayHandle = Core.CalendarDayHandle.SetCalendarDayHandle(calendarCalendarDayDate);
                 // Присваеваем дату календарного дня
                 _calendarDayDate = calendarCalendarDayDate;
@@ -208,7 +211,7 @@ namespace AGSoft
 
 
             /// <summary>
-            /// 
+            /// Изменяет описание календарного дня
             /// </summary>
             /// <param name="calendarDayDescription"></param>
             public void ChaingeCaledarDayDescription(CalendarDayDescription calendarDayDescription)
