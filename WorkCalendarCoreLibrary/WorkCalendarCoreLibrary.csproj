@@ -7,7 +7,7 @@
     <ProjectGuid>{C87D1898-5674-4498-8BC8-39D587BD92EE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WorkCalendarCoreLibrary</RootNamespace>
+    <RootNamespace>AGSoft</RootNamespace>
     <AssemblyName>WorkCalendarCoreLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -39,7 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\CoreInterfases.cs" />
+    <Compile Include="Core\CalendarDayDescription.cs" />
+    <Compile Include="Core\CalendarDayHandle.cs" />
+    <Compile Include="Core\CalendarDay.cs" />
+    <Compile Include="Core\ICalendarDay.cs" />
+    <Compile Include="Core\WorkDayAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

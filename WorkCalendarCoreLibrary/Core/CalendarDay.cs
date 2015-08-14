@@ -9,7 +9,7 @@
 #define DEBUG
 #define TRIAL
 using System;
-
+using AGSoft.Core;
 
 // ReSharper disable once CheckNamespace
 namespace AGSoft
@@ -21,82 +21,9 @@ namespace AGSoft
 
         #region Перечисления
 
-        /// <summary>
-        /// Перечисление состояния рабочих дней
-        /// </summary>
-        public enum WorkDayAttribute
-        {
-            /// <summary>
-            /// Рабочий день
-            /// </summary>
-            WorkDay = 0,
-
-            /// <summary>
-            /// Короткий день
-            /// </summary>
-            ShortDay,
-
-            /// <summary>
-            /// Не рабочий день
-            /// </summary>
-            UnWorkDay
-        };
-
-        /// <summary>
-        /// Перечисление состояния календарного дня
-        /// </summary>
-        public enum CalendarDayDescription
-        {
-            /// <summary>
-            /// Обычный день
-            /// </summary>
-            OrdinaryDay = 0,
-
-            /// <summary>
-            /// Выходной
-            /// </summary>
-            WeekendDay,
-
-            /// <summary>
-            /// Праздничный день
-            /// </summary>
-            HollyDay
-        };
-
         #endregion
 
         #region Интерфейсы
-
-        /// <summary>
-        /// Интерфейс, определяющий календарный день
-        /// </summary>
-        public interface ICalendarDay
-        {
-            /// <summary>
-            /// Дата, соответствующая календарному дню
-            /// </summary>
-            DateTime CalendarDayDate { get; }
-
-            /// <summary>
-            /// Свойство, определяющее аттрибуты дня в производственном календаре
-            /// </summary>
-            WorkDayAttribute CalendarDayAttribute { get; }
-
-            /// <summary>
-            /// Свойство, определяюшее состояние календарного дня
-            /// </summary>
-            CalendarDayDescription CalendarDayDescription { get; }
-
-            /// <summary>
-            /// Комментарий для календарного дня
-            /// </summary>
-            string CalendarDayComment { get; set; }
-            /// <summary>
-            /// Уникальный индентификатор календарного дня
-            /// </summary>
-            int CalendarDayHandle { get; }
-
-        }
 
         #endregion
 
@@ -160,7 +87,7 @@ namespace AGSoft
                 CalendarDayDescription calendarCalendarDayDescription, string calendarDayComment) : this()
             {
                 // Вычисляем индентификатор календарного дня
-                _calendarDayHandle = Core.CalendarDayHandle.SetCalendarDayHandle(calendarCalendarDayDate);
+                _calendarDayHandle = AGSoft.Core.CalendarDayHandle.SetCalendarDayHandle(calendarCalendarDayDate);
                 // Присваеваем полям значения 
                 _calendarDayDate = calendarCalendarDayDate;
                 _calendarDayAttribute = calendarWorkCalendarDayAttribute;
@@ -178,7 +105,7 @@ namespace AGSoft
             public CalendarDay(DateTime calendarCalendarDayDate) : this()
             {
                 // Вычисляем индентификатор календарного дня
-                _calendarDayHandle = Core.CalendarDayHandle.SetCalendarDayHandle(calendarCalendarDayDate);
+                _calendarDayHandle = AGSoft.Core.CalendarDayHandle.SetCalendarDayHandle(calendarCalendarDayDate);
                 // Присваеваем дату календарного дня
                 _calendarDayDate = calendarCalendarDayDate;
                 // Вычисляем аттрибуты календарного дня в календаре по умолчанию
@@ -213,7 +140,7 @@ namespace AGSoft
             /// <summary>
             /// Изменяет описание календарного дня
             /// </summary>
-            /// <param name="calendarDayDescription"></param>
+            /// <param name="calendarDayDescription">Описание календарного дня</param>
             public void ChaingeCaledarDayDescription(CalendarDayDescription calendarDayDescription)
             {
                 _calendarDayDescription = calendarDayDescription;
@@ -221,23 +148,6 @@ namespace AGSoft
 
             #endregion
 
-        }
-
-        /// <summary>
-        /// Определяет уникальность календарного дня
-        /// </summary>
-        public static class CalendarDayHandle
-        {
-            /// <summary>
-            /// Опеределяет уникальный индентификатор календарного дня
-            /// </summary>
-            /// <param name="date">День</param>
-            /// <returns>число, уникальный индентификатор календарного дня</returns>
-            public static int SetCalendarDayHandle(DateTime date)
-            {
-                // Вычисляем целое число, уникальный индентификатор календарного дня
-                return ((date.Year*1000) + date.DayOfYear);
-            }
         }
     }
 }
