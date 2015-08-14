@@ -18,15 +18,6 @@ namespace AGSoft
 
     namespace WorkCalendarCoreLibrary.Core
     {
-
-        #region Перечисления
-
-        #endregion
-
-        #region Интерфейсы
-
-        #endregion
-
         /// <summary>
         /// Базовая структура, описывающая календарный день
         /// </summary>
@@ -34,7 +25,7 @@ namespace AGSoft
         {
             #region Поля
 
-            private DateTime _calendarDayDate;
+            private readonly DateTime _calendarDayDate; // отметим только для чтения
             private WorkDayAttribute _calendarDayAttribute;
             private CalendarDayDescription _calendarDayDescription;
             private string _calendarDayComment;
@@ -42,30 +33,40 @@ namespace AGSoft
 
             #endregion
 
-
-
             #region Свойства
-
+            /// <summary>
+            /// Дата календарного дня
+            /// </summary>
             public DateTime CalendarDayDate
             {
+                // возвращаем дату
                 get { return _calendarDayDate; }
             }
-
+            /// <summary>
+            /// Аттрибуты календарного дня (рабочий календарь)
+            /// </summary>
             public WorkDayAttribute CalendarDayAttribute
             {
                 get { return _calendarDayAttribute; }
             }
-
+            /// <summary>
+            /// Расшифровка календарного дня
+            /// </summary>
             public CalendarDayDescription CalendarDayDescription
             {
                 get { return _calendarDayDescription; }
             }
-
+            /// <summary>
+            /// Комметарий к текущему календарному дню
+            /// </summary>
             public string CalendarDayComment
             {
                 get { return _calendarDayComment; }
-                set { _calendarDayComment = value ?? string.Empty; }
+                set { _calendarDayComment = value ?? string.Empty; } // если комметарий пустой, заполняем поле "пусой" строкой
             }
+            /// <summary>
+            /// Индентификатор календарного дня
+            /// </summary>
 
             public int CalendarDayHandle
             {
