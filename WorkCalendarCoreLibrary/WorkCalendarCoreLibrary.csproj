@@ -42,6 +42,7 @@
     <Compile Include="Core\CalendarDayDescription.cs" />
     <Compile Include="Core\CalendarDayHandle.cs" />
     <Compile Include="Core\CalendarDay.cs" />
+    <Compile Include="Core\CalendarWorkWeek.cs" />
     <Compile Include="Core\ICalendarDay.cs" />
     <Compile Include="Core\WorkDayAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
