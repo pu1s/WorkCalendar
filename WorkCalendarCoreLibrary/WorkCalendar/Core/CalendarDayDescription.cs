@@ -1,4 +1,6 @@
-namespace AGSoft.WorkCalendar
+namespace AGSoft.WorkCalendar.Core
+ 
+ 
 {
     /// <summary>
     /// Перечисление состояния календарного дня

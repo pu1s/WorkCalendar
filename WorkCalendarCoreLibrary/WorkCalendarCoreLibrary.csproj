@@ -39,13 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\CalendarDayDescription.cs" />
-    <Compile Include="Core\CalendarDayHandle.cs" />
-    <Compile Include="Core\CalendarDay.cs" />
-    <Compile Include="Core\CalendarWorkWeek.cs" />
-    <Compile Include="Core\ICalendarDay.cs" />
-    <Compile Include="Core\WorkDayAttribute.cs" />
+    <Compile Include="WorkCalendar\Core\CalendarDayHandle.cs" />
+    <Compile Include="WorkCalendar\Core\CalendarDay.cs" />
+    <Compile Include="WorkCalendar\Core\ICalendarDay.cs" />
+    <Compile Include="WorkCalendar\Core\WorkDayAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkCalendar\Core\CalendarDayDescription.cs" />
+    <Compile Include="WorkCalendar\Core\CalendarWorkWeek.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
