@@ -9,7 +9,9 @@
 #define DEBUG
 #define TRIAL
 using System;
+using System.Collections.Generic;
 using AGSoft.WorkCalendar.Core;
+using AGSoft.WorkCalendarCoreLibrary.Core;
 
 // ReSharper disable once CheckNamespace
 namespace AGSoft
@@ -80,19 +82,19 @@ namespace AGSoft
             /// <summary>
             /// Базовый конструктор
             /// </summary>
-            /// <param name="calendarCalendarDayDate">Дата календарного дня</param>
-            /// <param name="calendarWorkCalendarDayAttribute">Аттрибуты календарного дня</param>
-            /// <param name="calendarCalendarDayDescription">Расшифровка параметров календарного дня</param>
+            /// <param name="calendarDayDate">Дата календарного дня</param>
+            /// <param name="calendarDayAttribute">Аттрибуты календарного дня</param>
+            /// <param name="calendarDayDescription">Расшифровка параметров календарного дня</param>
             /// <param name="calendarDayComment">Комментарий</param>
-            public CalendarDay(DateTime calendarCalendarDayDate, WorkDayAttribute calendarWorkCalendarDayAttribute,
-                CalendarDayDescription calendarCalendarDayDescription, string calendarDayComment) : this()
+            public CalendarDay(DateTime calendarDayDate, WorkDayAttribute calendarDayAttribute,
+                CalendarDayDescription calendarDayDescription, string calendarDayComment) : this()
             {
                 // Вычисляем индентификатор календарного дня
-                _calendarDayHandle = WorkCalendar.Core.CalendarDayHandle.SetCalendarDayHandle(calendarCalendarDayDate);
+                _calendarDayHandle = WorkCalendar.Core.CalendarDayHandle.SetCalendarDayHandle(calendarDayDate);
                 // Присваеваем полям значения 
-                _calendarDayDate = calendarCalendarDayDate;
-                _calendarDayAttribute = calendarWorkCalendarDayAttribute;
-                _calendarDayDescription = calendarCalendarDayDescription;
+                _calendarDayDate = calendarDayDate;
+                _calendarDayAttribute = calendarDayAttribute;
+                _calendarDayDescription = calendarDayDescription;
                 // Если комментарий не указан полю присваиватся пустая строка
                 _calendarDayComment = string.IsNullOrEmpty(calendarDayComment) ? string.Empty : calendarDayComment;
 
@@ -102,26 +104,46 @@ namespace AGSoft
             /// <summary>
             /// Конструктор по дате календарного дня
             /// </summary>
-            /// <param name="calendarCalendarDayDate">Дате</param>
-            public CalendarDay(DateTime calendarCalendarDayDate) : this()
+            /// <param name="calendarDayDate">Дате</param>
+            public CalendarDay(DateTime calendarDayDate) : this()
             {
                 // Вычисляем индентификатор календарного дня
-                _calendarDayHandle = WorkCalendar.Core.CalendarDayHandle.SetCalendarDayHandle(calendarCalendarDayDate);
+                _calendarDayHandle = WorkCalendar.Core.CalendarDayHandle.SetCalendarDayHandle(calendarDayDate);
                 // Присваеваем дату календарного дня
-                _calendarDayDate = calendarCalendarDayDate;
+                _calendarDayDate = calendarDayDate;
                 // Вычисляем аттрибуты календарного дня в календаре по умолчанию
                 // Если этот день суббота или воскресенье, считаем его не рабочим днем
-                _calendarDayAttribute = calendarCalendarDayDate.DayOfWeek == DayOfWeek.Saturday &&
-                                        calendarCalendarDayDate.DayOfWeek == DayOfWeek.Sunday
+                _calendarDayAttribute = calendarDayDate.DayOfWeek == DayOfWeek.Saturday &&
+                                        calendarDayDate.DayOfWeek == DayOfWeek.Sunday
                     ? WorkDayAttribute.UnWorkDay
                     // В противном случае день - рабочий
                     : WorkDayAttribute.WorkDay;
                 //
                 // Вычисляем аннотации к календарному дню
-                // В процессе разработки
+                
                 _calendarDayDescription = CalendarDayDescription.OrdinaryDay;
                 // Комметарии в этом случае "пустые"
                 _calendarDayComment = string.Empty;
+            }
+
+            public CalendarDay(DateTime calendarDayDate, bool calculateHollydays) : this()
+            {
+                // вычисляем уникальный индентификатор календарного дня
+                _calendarDayHandle = WorkCalendar.Core.CalendarDayHandle.SetCalendarDayHandle(calendarDayDate);
+                // вычисляем дату календарного дня
+                _calendarDayDate = calendarDayDate;
+
+                if (!calculateHollydays)
+                {
+                    // Присваевем значение аттирибутов календарного дня 
+                    // Если этот день суббота или воскресенье, считаем его не рабочим днем
+                    _calendarDayAttribute = calendarDayDate.DayOfWeek == DayOfWeek.Saturday &&
+                                            calendarDayDate.DayOfWeek == DayOfWeek.Sunday
+                        ? WorkDayAttribute.UnWorkDay
+                        // В противном случае день - рабочий
+                        : WorkDayAttribute.WorkDay;
+                    // Вычисляем 
+                }
             }
 
             #endregion
@@ -147,8 +169,9 @@ namespace AGSoft
                 _calendarDayDescription = calendarDayDescription;
             }
 
-            #endregion
 
+            #endregion
         }
     }
+
 }
