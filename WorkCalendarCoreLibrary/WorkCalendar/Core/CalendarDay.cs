@@ -23,6 +23,7 @@ namespace AGSoft
         /// <summary>
         /// Базовая структура, описывающая календарный день
         /// </summary>
+        [Serializable()]
         public struct CalendarDay : ICalendarDay
         {
             #region Поля
