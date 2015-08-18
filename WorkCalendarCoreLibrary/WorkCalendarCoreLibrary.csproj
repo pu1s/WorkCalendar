@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OrdinaryCalendar.cs" />
     <Compile Include="WorkCalendar\Core\CalendarDayHandle.cs" />
     <Compile Include="WorkCalendar\Core\CalendarDay.cs" />
     <Compile Include="WorkCalendar\Core\HollydasInfo.cs" />
