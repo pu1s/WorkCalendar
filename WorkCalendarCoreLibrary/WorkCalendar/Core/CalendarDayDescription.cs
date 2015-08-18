@@ -1,24 +1,24 @@
 namespace AGSoft.WorkCalendar.Core
- 
- 
+
+
 {
     /// <summary>
-    /// Перечисление состояния календарного дня
+    ///     Перечисление состояния календарного дня
     /// </summary>
     public enum CalendarDayDescription
     {
         /// <summary>
-        /// Обычный день
+        ///     Обычный день
         /// </summary>
         OrdinaryDay = 0,
 
         /// <summary>
-        /// Выходной
+        ///     Выходной
         /// </summary>
         WeekendDay,
 
         /// <summary>
-        /// Праздничный день
+        ///     Праздничный день
         /// </summary>
         HollyDay
     };

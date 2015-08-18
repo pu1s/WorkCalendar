@@ -1,21 +1,22 @@
 namespace AGSoft.WorkCalendar.Core
 {
     /// <summary>
-    /// Рабочая неделя
+    ///     Рабочая неделя
     /// </summary>
- 
     public enum CalendarWorkWeek
     {
         /// <summary>
-        /// Пятидневная
+        ///     Пятидневная
         /// </summary>
         FiveDaysWorkWeek = 0,
+
         /// <summary>
-        /// Шестидневная
+        ///     Шестидневная
         /// </summary>
         SixDaysWorkWeek,
+
         /// <summary>
-        /// Неопределенная
+        ///     Неопределенная
         /// </summary>
         UndefinedWorkWeek
     };

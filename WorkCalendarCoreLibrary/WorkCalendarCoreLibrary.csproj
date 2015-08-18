@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="WorkCalendar\Core\CalendarDayHandle.cs" />
     <Compile Include="WorkCalendar\Core\CalendarDay.cs" />
+    <Compile Include="WorkCalendar\Core\HollydasInfo.cs" />
     <Compile Include="WorkCalendar\Core\ICalendarDay.cs" />
     <Compile Include="WorkCalendar\Core\WorkDayAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

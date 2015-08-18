@@ -3,12 +3,12 @@ using System;
 namespace AGSoft.WorkCalendar.Core
 {
     /// <summary>
-    /// Определяет уникальность календарного дня
+    ///     Определяет уникальность календарного дня
     /// </summary>
     public static class CalendarDayHandle
     {
         /// <summary>
-        /// Опеределяет уникальный индентификатор календарного дня
+        ///     Опеределяет уникальный индентификатор календарного дня
         /// </summary>
         /// <param name="date">День</param>
         /// <returns>число, уникальный индентификатор календарного дня</returns>
