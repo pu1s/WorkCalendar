@@ -6,11 +6,14 @@ namespace AGSoft
     {
         public static void GetCalendar()
         {
-            Dictionary<string, string> yearDictionary;
-            yearDictionary = new Dictionary<string, string>();
-            yearDictionary.Add("01.01", "Новый год!");
-            yearDictionary.Add("23.02", "День защитника отечества");
-            yearDictionary.Add("08.03", "Международный женский день");
+            // ReSharper disable once JoinDeclarationAndInitializer
+            // ReSharper disable once ObjectCreationAsStatement
+            new Dictionary<string, string>
+            {
+                {"01.01", "Новый год!"},
+                {"23.02", "День защитника отечества"},
+                {"08.03", "Международный женский день"}
+            };
         }
         
         
