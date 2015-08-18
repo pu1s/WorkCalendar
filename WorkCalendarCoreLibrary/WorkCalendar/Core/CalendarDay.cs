@@ -172,6 +172,7 @@ namespace AGSoft
         /// </summary>
         public static class ChangeCalendarDay
         {
+            public delegate void CallBack();
             /// <summary>
             /// Изменяет аттрибуты календарного дня
             /// </summary>
@@ -186,6 +187,26 @@ namespace AGSoft
                 calendarDay.ChangeCalendarDayAttribute(calendarWorkDayAttribute);
                 calendarDay.ChangeCaledarDayDescription(calendarDayDescription);
                 calendarDay.CalendarDayComment = calendarDayComment;
+            }
+
+            /// <summary>
+            /// Изменяет аттрибуты календарного дня (перегрузка)
+            /// </summary>
+            /// <param name="calendarDayDescription">Расшифровка календарного дня</param>
+            /// <param name="calendarWorkDayAttribute">Аттрибуты календарного дня</param>
+            /// <param name="calendarDayComment">Комментарий</param>
+            /// <param name="calendarDay">структура, календарный день, переданная по ссылке</param>
+            /// <param name="callBackMetod">Метод, запускаемый при изменнени аттрибутов календарного дня</param>
+            public static void Change(CalendarDayDescription calendarDayDescription,
+                WorkDayAttribute calendarWorkDayAttribute,
+                string calendarDayComment, ref CalendarDay calendarDay, CallBack callBackMetod)
+            {
+                calendarDay.ChangeCalendarDayAttribute(calendarWorkDayAttribute);
+                calendarDay.ChangeCaledarDayDescription(calendarDayDescription);
+                calendarDay.CalendarDayComment = calendarDayComment;
+                //
+                if(callBackMetod != null)
+                    callBackMetod.Invoke();
             }
         }
     }
