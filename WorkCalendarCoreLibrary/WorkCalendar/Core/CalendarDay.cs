@@ -74,6 +74,7 @@ namespace AGSoft
 
             #region Конструкторы
 
+
             /// <summary>
             ///     Базовый конструктор
             /// </summary>
@@ -164,7 +165,6 @@ namespace AGSoft
             }
 
             #endregion
-
 
         }
         /// <summary>

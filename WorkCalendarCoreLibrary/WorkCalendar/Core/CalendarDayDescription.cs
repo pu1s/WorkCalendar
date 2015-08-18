@@ -8,9 +8,13 @@ namespace AGSoft.WorkCalendar.Core
     public enum CalendarDayDescription
     {
         /// <summary>
+        /// Значение не присвоено
+        /// </summary>
+        Empty = 0,
+        /// <summary>
         ///     Обычный день
         /// </summary>
-        OrdinaryDay = 0,
+        OrdinaryDay,
 
         /// <summary>
         ///     Выходной

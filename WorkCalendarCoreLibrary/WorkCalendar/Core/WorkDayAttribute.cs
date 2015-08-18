@@ -6,9 +6,13 @@ namespace AGSoft.WorkCalendar.Core
     public enum WorkDayAttribute
     {
         /// <summary>
+        /// Значение не присвоено
+        /// </summary>
+        Empty = 0,
+        /// <summary>
         ///     Рабочий день
         /// </summary>
-        WorkDay = 0,
+        WorkDay,
 
         /// <summary>
         ///     Короткий день
