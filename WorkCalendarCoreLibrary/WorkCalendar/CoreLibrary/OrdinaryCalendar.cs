@@ -4,15 +4,16 @@ namespace AGSoft.WorkCalendar.CoreLibrary
 {
     public static class OrdinaryCalendar
     {
-        public static void GetCalendar()
+        public static Dictionary<string, string> GetCalendar()
         {
-            // ReSharper disable once JoinDeclarationAndInitializer
-            // ReSharper disable once ObjectCreationAsStatement
-            new Dictionary<string, string>
+            
+             return new Dictionary<string, string>
             {
-                {"01.01", "Новый год!"},
+                {"01.01", "Новый год"},
                 {"23.02", "День защитника отечества"},
-                {"08.03", "Международный женский день"}
+                {"08.03", "Международный женский день"},
+                {"01.05", "Первое мая" },
+                {"09.05", "День победы" }
             };
         }
         
