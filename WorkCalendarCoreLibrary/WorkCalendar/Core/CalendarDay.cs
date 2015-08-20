@@ -36,11 +36,7 @@ namespace AGSoft
             /// <summary>
             ///     Дата календарного дня
             /// </summary>
-            public DateTime CalendarDayDate
-            {
-                // возвращаем дату
-                get { return _calendarDayDate; }
-            }
+            public DateTime CalendarDayDate => _calendarDayDate;
 
             /// <summary>
             ///     Аттрибуты календарного дня (рабочий календарь)
@@ -65,10 +61,7 @@ namespace AGSoft
             /// <summary>
             ///     Индентификатор календарного дня
             /// </summary>
-            public int CalendarDayHandle
-            {
-                get { return _calendarDayHandle; }
-            }
+            public int CalendarDayHandle => _calendarDayHandle;
 
             #endregion
 
@@ -143,6 +136,28 @@ namespace AGSoft
 
             #endregion
 
+            #region Перегруженные методы
+
+            /// <summary>
+            /// Returns the hash code for this instance.
+            /// </summary>
+            /// <returns>
+            /// A 32-bit signed integer that is the hash code for this instance.
+            /// </returns>
+            /// <filterpriority>2</filterpriority>
+            public override int GetHashCode()
+            {
+                return _calendarDayHandle != 0 ? _calendarDayHandle : 0;
+            }
+
+            public override string ToString()
+            {
+                return 
+            }
+
+            #endregion
+
+
             #region Методы
 
             /// <summary>
@@ -191,8 +206,7 @@ namespace AGSoft
                 calendarDay.ChangeCaledarDayDescription(calendarDayDescription);
                 calendarDay.CalendarDayComment = calendarDayComment;
                 // Если указан делегат, то выполняем его
-                if(callBackMetod != null)
-                    callBackMetod.Invoke();
+                callBackMetod?.Invoke(); // Новые фишки
             }
         }
     }
