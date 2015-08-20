@@ -1,6 +1,6 @@
 using System;
 
-namespace AGSoft.WorkCalendar.Core
+namespace AGSoft.WorkCalendar.CoreLibrary
 {
     /// <summary>
     ///     ќпредел€ет уникальность календарного дн€

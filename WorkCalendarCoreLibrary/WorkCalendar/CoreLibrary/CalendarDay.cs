@@ -9,15 +9,9 @@
 #define DEBUG
 #define TRIAL
 using System;
-using System.CodeDom;
 using System.Globalization;
-using AGSoft.WorkCalendar.Core;
 
-// ReSharper disable once CheckNamespace
-
-namespace AGSoft
-{
-    namespace WorkCalendarCoreLibrary.Core
+namespace AGSoft.WorkCalendar.CoreLibrary
     {
         /// <summary>
         ///     Базовая структура, описывающая календарный день
@@ -81,7 +75,7 @@ namespace AGSoft
                 CalendarDayDescription calendarDayDescription, string calendarDayComment) : this()
             {
                 // Вычисляем индентификатор календарного дня
-                _calendarDayHandle = WorkCalendar.Core.CalendarDayHandle.SetCalendarDayHandle(calendarDayDate);
+                _calendarDayHandle = CoreLibrary.CalendarDayHandle.SetCalendarDayHandle(calendarDayDate);
                 // Присваеваем полям значения 
                 _calendarDayDate = calendarDayDate;
                 CalendarDayAttribute = calendarDayAttribute;
@@ -98,7 +92,7 @@ namespace AGSoft
             public CalendarDay(DateTime calendarDayDate) : this()
             {
                 // Вычисляем индентификатор календарного дня
-                _calendarDayHandle = WorkCalendar.Core.CalendarDayHandle.SetCalendarDayHandle(calendarDayDate);
+                _calendarDayHandle = CoreLibrary.CalendarDayHandle.SetCalendarDayHandle(calendarDayDate);
                 // Присваеваем дату календарного дня
                 _calendarDayDate = calendarDayDate;
                 // Вычисляем аттрибуты календарного дня в календаре по умолчанию
@@ -119,7 +113,7 @@ namespace AGSoft
             public CalendarDay(DateTime calendarDayDate, bool calculateHollydays) : this()
             {
                 // вычисляем уникальный индентификатор календарного дня
-                _calendarDayHandle = WorkCalendar.Core.CalendarDayHandle.SetCalendarDayHandle(calendarDayDate);
+                _calendarDayHandle = CoreLibrary.CalendarDayHandle.SetCalendarDayHandle(calendarDayDate);
                 // вычисляем дату календарного дня
                 _calendarDayDate = calendarDayDate;
 
@@ -255,4 +249,3 @@ namespace AGSoft
             }
         }
     }
-}

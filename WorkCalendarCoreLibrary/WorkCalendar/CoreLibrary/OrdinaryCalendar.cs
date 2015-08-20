@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AGSoft
+namespace AGSoft.WorkCalendar.CoreLibrary
 {
     public static class OrdinaryCalendar
     {

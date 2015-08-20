@@ -1,7 +1,6 @@
 ﻿using System;
-using AGSoft.WorkCalendar.Core;
 
-namespace AGSoft
+namespace AGSoft.WorkCalendar.CoreLibrary
 {
     public static class HollydasInfo
     {
