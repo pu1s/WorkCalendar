@@ -179,12 +179,22 @@ namespace AGSoft
             #endregion
 
             #region Перегрузка операторов
-
+            /// <summary>
+            /// Переопределенный оператор равенства
+            /// </summary>
+            /// <param name="a">Объект а</param>
+            /// <param name="b"> Объект b</param>
+            /// <returns>Возвращает истина, если совпадают хеши объектов, и ложь - если нет </returns>
             public static bool operator ==(CalendarDay a, CalendarDay b)
             {
-                return true;
+                return a.GetHashCode() == b.GetHashCode();
             }
-
+            /// <summary>
+            /// Переопределенный оператор неравенства
+            /// </summary>
+            /// <param name="a">Объект а</param>
+            /// <param name="b">Объект b</param>
+            /// <returns>Возвращает истина, если совпадают хеши объектов, и ложь - если нет</returns>
             public static bool operator !=(CalendarDay a, CalendarDay b)
             {
                 return !(a == b);
