@@ -2,7 +2,7 @@
 
 namespace AGSoft.WorkCalendar.CoreLibrary
 {
-    public static class HollydasInfo
+    public static class HollydaysInfo
     {
         public static CalendarDayDescription GetCalendarDayDescription(DateTime date)
         {

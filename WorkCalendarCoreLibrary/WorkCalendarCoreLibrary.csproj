@@ -42,7 +42,7 @@
     <Compile Include="WorkCalendar\CoreLibrary\OrdinaryCalendar.cs" />
     <Compile Include="WorkCalendar\CoreLibrary\CalendarDayHandle.cs" />
     <Compile Include="WorkCalendar\CoreLibrary\CalendarDay.cs" />
-    <Compile Include="WorkCalendar\CoreLibrary\HollydasInfo.cs" />
+    <Compile Include="WorkCalendar\CoreLibrary\HollydaysInfo.cs" />
     <Compile Include="WorkCalendar\CoreLibrary\ICalendarDay.cs" />
     <Compile Include="WorkCalendar\CoreLibrary\WorkDayAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
