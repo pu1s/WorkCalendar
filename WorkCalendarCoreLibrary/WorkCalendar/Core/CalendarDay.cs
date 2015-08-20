@@ -9,6 +9,7 @@
 #define DEBUG
 #define TRIAL
 using System;
+using System.CodeDom;
 using System.Globalization;
 using AGSoft.WorkCalendar.Core;
 
@@ -163,9 +164,30 @@ namespace AGSoft
                 return string.IsNullOrEmpty(_calendarDayDate.ToString(CultureInfo.CurrentCulture)) ? _calendarDayDate.ToLongDateString() : "Undefined Date";
             }
 
+            /// <summary>
+            /// Indicates whether this instance and a specified object are equal.
+            /// </summary>
+            /// <returns>
+            /// true if <paramref name="obj"/> and this instance are the same type and represent the same value; otherwise, false. 
+            /// </returns>
+            /// <param name="obj">The object to compare with the current instance. </param><filterpriority>2</filterpriority>
             public override bool Equals(object obj)
             {
-                return obj != null && GetType() == obj.GetType();
+                return obj != null || GetType() == typeof (CalendarDay);
+            }
+
+            #endregion
+
+            #region Перегрузка операторов
+
+            public static bool operator ==(CalendarDay a, CalendarDay b)
+            {
+                return true;
+            }
+
+            public static bool operator !=(CalendarDay a, CalendarDay b)
+            {
+                return !(a == b);
             }
 
             #endregion
