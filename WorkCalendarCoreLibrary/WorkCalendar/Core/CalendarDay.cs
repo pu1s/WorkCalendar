@@ -9,6 +9,7 @@
 #define DEBUG
 #define TRIAL
 using System;
+using System.Globalization;
 using AGSoft.WorkCalendar.Core;
 
 // ReSharper disable once CheckNamespace
@@ -150,9 +151,21 @@ namespace AGSoft
                 return _calendarDayHandle != 0 ? _calendarDayHandle : 0;
             }
 
+            /// <summary>
+            /// Returns the fully qualified type name of this instance.
+            /// </summary>
+            /// <returns>
+            /// A <see cref="T:System.String"/> containing a fully qualified type name.
+            /// </returns>
+            /// <filterpriority>2</filterpriority>
             public override string ToString()
             {
-                return 
+                return string.IsNullOrEmpty(_calendarDayDate.ToString(CultureInfo.CurrentCulture)) ? _calendarDayDate.ToLongDateString() : "Undefined Date";
+            }
+
+            public override bool Equals(object obj)
+            {
+                return base.Equals(obj);
             }
 
             #endregion
