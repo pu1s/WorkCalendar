@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkCalendarEditor", "WorkC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinDateRewisor", "WinDateRewisor\WinDateRewisor.csproj", "{D2F97977-0FAB-4A28-BBFD-2A36642AF1A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordCalendarControl", "WordCalendarControl\WordCalendarControl.csproj", "{A297AA71-8A6C-4E66-B706-0DFD76646DD7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkCalendarControl", "WordCalendarControl\WorkCalendarControl.csproj", "{A297AA71-8A6C-4E66-B706-0DFD76646DD7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkCalendarCoreLibrary", "WorkCalendarCoreLibrary\WorkCalendarCoreLibrary.csproj", "{C87D1898-5674-4498-8BC8-39D587BD92EE}"
 EndProject
