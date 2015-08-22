@@ -1,14 +1,14 @@
 ﻿using System;
+using System.Drawing;
 
 namespace AGSoft.WorkCalendarControl.Interfaces
 {
     public interface IWorkCalendarDayControlProperty
     {
-        bool IsDescripted { get; set; }
-        bool IsCommented { get; set; }
-        bool IsAttributed { get; set; }
-
-        event EventHandler ChangeWorkCalendarDayProperty;
+        bool IsSelected { get; set; }
+        //------------------------------------
+        Color BgLeaveColor { get; set; }
+        //------------------------------------
     }
 }
 
