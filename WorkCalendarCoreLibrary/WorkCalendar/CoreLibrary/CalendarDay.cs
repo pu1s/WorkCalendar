@@ -32,7 +32,10 @@ namespace AGSoft.WorkCalendar.CoreLibrary
         /// <summary>
         ///     Дата календарного дня
         /// </summary>
-        public DateTime CalendarDayDate => _calendarDayDate;
+        public DateTime CalendarDayDate
+        {
+            get { return _calendarDayDate; }
+        }
 
         /// <summary>
         ///     Аттрибуты календарного дня (рабочий календарь)
@@ -57,8 +60,10 @@ namespace AGSoft.WorkCalendar.CoreLibrary
         /// <summary>
         ///     Индентификатор календарного дня
         /// </summary>
-        public int CalendarDayHandle => _calendarDayHandle;
-
+        public int CalendarDayHandle
+        {
+            get { return _calendarDayHandle; }
+        }
         #endregion
 
         #region Конструкторы
@@ -244,7 +249,7 @@ namespace AGSoft.WorkCalendar.CoreLibrary
             calendarDay.ChangeCaledarDayDescription(calendarDayDescription);
             calendarDay.CalendarDayComment = calendarDayComment;
             // Если указан делегат, то выполняем его
-            callBackMetod?.Invoke(); // Новые фишки
+         if(callBackMetod!= null) callBackMetod.Invoke();
         }
     }
 }

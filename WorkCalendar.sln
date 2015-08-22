@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkCalendarEditor", "WorkCalendar\WorkCalendarEditor.csproj", "{BE275405-8C82-4CCE-8CCD-867F8D70DB09}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkCalendarControl", "WordCalendarControl\WorkCalendarControl.csproj", "{A297AA71-8A6C-4E66-B706-0DFD76646DD7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkCalendarCoreLibrary", "WorkCalendarCoreLibrary\WorkCalendarCoreLibrary.csproj", "{C87D1898-5674-4498-8BC8-39D587BD92EE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "agsal", "agal\agal.vcxproj", "{E708C60A-6CC0-4C69-AAB4-36815302FF86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,20 @@ Global
 		{C87D1898-5674-4498-8BC8-39D587BD92EE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{C87D1898-5674-4498-8BC8-39D587BD92EE}.Release|Win32.ActiveCfg = Release|Any CPU
 		{C87D1898-5674-4498-8BC8-39D587BD92EE}.Release|x86.ActiveCfg = Release|Any CPU
+		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Debug|Win32.Build.0 = Debug|Win32
+		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Debug|x86.ActiveCfg = Debug|Win32
+		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Debug|x86.Build.0 = Debug|Win32
+		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Release|Any CPU.ActiveCfg = Release|Win32
+		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Release|Win32.ActiveCfg = Release|Win32
+		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Release|Win32.Build.0 = Release|Win32
+		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Release|x86.ActiveCfg = Release|Win32
+		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
