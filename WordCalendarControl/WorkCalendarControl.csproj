@@ -43,12 +43,6 @@
   <ItemGroup>
     <Compile Include="Interfaces\IWorkDayCalendarControlProperty.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WorkDayCalendarControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="WorkDayCalendarControl.Designer.cs">
-      <DependentUpon>WorkDayCalendarControl.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WorkCalendarCoreLibrary\WorkCalendarCoreLibrary.csproj">
