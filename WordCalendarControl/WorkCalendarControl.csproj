@@ -41,7 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IWorkCalendarDayControlProperty.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkCalendarDayControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WorkCalendarDayControl.Designer.cs">
+      <DependentUpon>WorkCalendarDayControl.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WorkCalendarCoreLibrary\WorkCalendarCoreLibrary.csproj">
@@ -50,7 +57,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interfaces\" />
+    <EmbeddedResource Include="WorkCalendarDayControl.resx">
+      <DependentUpon>WorkCalendarDayControl.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
