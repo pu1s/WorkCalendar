@@ -1,35 +1,21 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using AGSoft.WorkCalendar.CoreLibrary;
 using AGSoft.WorkCalendarControl.Interfaces;
 
 namespace AGSoft.WorkCalendarControl
 {
-    public partial class WorkCalendarDayControl : UserControl, IWorkCalendarDayControlProperty, IWorkCalendarDayControlPaint
+    public partial class WorkCalendarDayControl : UserControl, IWorkCalendarDayControlProperty,
+        IWorkCalendarDayControlPaint
     {
-        #region Поля
-        /// <summary>
-        /// структура календарный день
-        /// </summary>
-        private CalendarDay _calendarDay;
-
-        private bool _isSelected;
-
-        #endregion
-
-
         public WorkCalendarDayControl()
         {
             InitializeComponent();
         }
+
         /// <summary>
-        /// Календарный день
+        ///     Календарный день
         /// </summary>
         public CalendarDay CalendarDay
         {
@@ -39,12 +25,24 @@ namespace AGSoft.WorkCalendarControl
 
         public override Color BackColor { get; set; }
         public override Font Font { get; set; }
-        protected override void OnPaint(PaintEventArgs e)
+
+        public void DrawDate(Graphics gfx)
         {
-            base.OnPaint(e);
+            throw new NotImplementedException();
         }
+
+        public void DrawMarker(Graphics gfx)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DrawBg(Graphics gfx)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
-        /// Свойство, показывающее выделен ли компонент
+        ///     Свойство, показывающее выделен ли компонент
         /// </summary>
         public bool IsSelected
         {
@@ -61,19 +59,20 @@ namespace AGSoft.WorkCalendarControl
 
         public Color BgLeaveColor { get; set; }
 
-        public void DrawDate(Graphics gfx)
+        protected override void OnPaint(PaintEventArgs e)
         {
-            throw new System.NotImplementedException();
+            base.OnPaint(e);
         }
 
-        public void DrawMarker(Graphics gfx)
-        {
-            throw new System.NotImplementedException();
-        }
+        #region Поля
 
-        public void DrawBg(Graphics gfx)
-        {
-            throw new System.NotImplementedException();
-        }
+        /// <summary>
+        ///     структура календарный день
+        /// </summary>
+        private CalendarDay _calendarDay;
+
+        private bool _isSelected;
+
+        #endregion
     }
 }

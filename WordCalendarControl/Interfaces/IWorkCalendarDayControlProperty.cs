@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace AGSoft.WorkCalendarControl.Interfaces
 {
@@ -8,7 +7,5 @@ namespace AGSoft.WorkCalendarControl.Interfaces
         bool IsSelected { get; set; }
         //------------------------------------
         Color BgLeaveColor { get; set; }
-        //------------------------------------
     }
 }
-

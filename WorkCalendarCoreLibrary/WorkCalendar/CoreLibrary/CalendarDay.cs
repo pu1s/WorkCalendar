@@ -21,9 +21,7 @@ namespace AGSoft.WorkCalendar.CoreLibrary
     {
         #region Поля
 
-        private readonly DateTime _calendarDayDate; // отметим только для чтения
         private string _calendarDayComment;
-        private readonly int _calendarDayHandle;
 
         #endregion
 
@@ -32,10 +30,7 @@ namespace AGSoft.WorkCalendar.CoreLibrary
         /// <summary>
         ///     Дата календарного дня
         /// </summary>
-        public DateTime CalendarDayDate
-        {
-            get { return _calendarDayDate; }
-        }
+        public DateTime CalendarDayDate { get; }
 
         /// <summary>
         ///     Аттрибуты календарного дня (рабочий календарь)
@@ -60,14 +55,11 @@ namespace AGSoft.WorkCalendar.CoreLibrary
         /// <summary>
         ///     Индентификатор календарного дня
         /// </summary>
-        public int CalendarDayHandle
-        {
-            get { return _calendarDayHandle; }
-        }
+        public int CalendarDayHandle { get; }
+
         #endregion
 
         #region Конструкторы
-
 
         /// <summary>
         ///     Базовый конструктор
@@ -80,9 +72,9 @@ namespace AGSoft.WorkCalendar.CoreLibrary
             CalendarDayDescription calendarDayDescription, string calendarDayComment) : this()
         {
             // Вычисляем индентификатор календарного дня
-            _calendarDayHandle = CoreLibrary.CalendarDayHandle.SetCalendarDayHandle(calendarDayDate);
+            CalendarDayHandle = CoreLibrary.CalendarDayHandle.SetCalendarDayHandle(calendarDayDate);
             // Присваеваем полям значения 
-            _calendarDayDate = calendarDayDate;
+            CalendarDayDate = calendarDayDate;
             CalendarDayAttribute = calendarDayAttribute;
             CalendarDayDescription = calendarDayDescription;
             // Если комментарий не указан полю присваиватся пустая строка
@@ -97,9 +89,9 @@ namespace AGSoft.WorkCalendar.CoreLibrary
         public CalendarDay(DateTime calendarDayDate) : this()
         {
             // Вычисляем индентификатор календарного дня
-            _calendarDayHandle = CoreLibrary.CalendarDayHandle.SetCalendarDayHandle(calendarDayDate);
+            CalendarDayHandle = CoreLibrary.CalendarDayHandle.SetCalendarDayHandle(calendarDayDate);
             // Присваеваем дату календарного дня
-            _calendarDayDate = calendarDayDate;
+            CalendarDayDate = calendarDayDate;
             // Вычисляем аттрибуты календарного дня в календаре по умолчанию
             // Если этот день суббота или воскресенье, считаем его не рабочим днем
             CalendarDayAttribute = calendarDayDate.DayOfWeek == DayOfWeek.Saturday &&
@@ -118,9 +110,9 @@ namespace AGSoft.WorkCalendar.CoreLibrary
         public CalendarDay(DateTime calendarDayDate, bool calculateHollydays) : this()
         {
             // вычисляем уникальный индентификатор календарного дня
-            _calendarDayHandle = CoreLibrary.CalendarDayHandle.SetCalendarDayHandle(calendarDayDate);
+            CalendarDayHandle = CoreLibrary.CalendarDayHandle.SetCalendarDayHandle(calendarDayDate);
             // вычисляем дату календарного дня
-            _calendarDayDate = calendarDayDate;
+            CalendarDayDate = calendarDayDate;
             // Присваевем значение аттирибутов календарного дня 
             // Если этот день суббота или воскресенье, считаем его не рабочим днем
             CalendarDayAttribute = calendarDayDate.DayOfWeek == DayOfWeek.Saturday &&
@@ -139,46 +131,50 @@ namespace AGSoft.WorkCalendar.CoreLibrary
         #region Перегруженные методы
 
         /// <summary>
-        /// Returns the hash code for this instance.
+        ///     Returns the hash code for this instance.
         /// </summary>
         /// <returns>
-        /// A 32-bit signed integer that is the hash code for this instance.
+        ///     A 32-bit signed integer that is the hash code for this instance.
         /// </returns>
         /// <filterpriority>2</filterpriority>
         public override int GetHashCode()
         {
-            return _calendarDayHandle != 0 ? _calendarDayHandle : 0;
+            return CalendarDayHandle != 0 ? CalendarDayHandle : 0;
         }
 
         /// <summary>
-        /// Returns the fully qualified type name of this instance.
+        ///     Returns the fully qualified type name of this instance.
         /// </summary>
         /// <returns>
-        /// A <see cref="T:System.String"/> containing a fully qualified type name.
+        ///     A <see cref="T:System.String" /> containing a fully qualified type name.
         /// </returns>
         /// <filterpriority>2</filterpriority>
         public override string ToString()
         {
-            return string.IsNullOrEmpty(_calendarDayDate.ToString(CultureInfo.CurrentCulture)) ? _calendarDayDate.ToLongDateString() : "Undefined Date";
+            return string.IsNullOrEmpty(CalendarDayDate.ToString(CultureInfo.CurrentCulture))
+                ? CalendarDayDate.ToLongDateString()
+                : "Undefined Date";
         }
 
         /// <summary>
-        /// Indicates whether this instance and a specified object are equal.
+        ///     Indicates whether this instance and a specified object are equal.
         /// </summary>
         /// <returns>
-        /// true if <paramref name="obj"/> and this instance are the same type and represent the same value; otherwise, false. 
+        ///     true if <paramref name="obj" /> and this instance are the same type and represent the same value; otherwise, false.
         /// </returns>
-        /// <param name="obj">The object to compare with the current instance. </param><filterpriority>2</filterpriority>
+        /// <param name="obj">The object to compare with the current instance. </param>
+        /// <filterpriority>2</filterpriority>
         public override bool Equals(object obj)
         {
-            return obj != null || GetType() == typeof(CalendarDay);
+            return obj != null || GetType() == typeof (CalendarDay);
         }
 
         #endregion
 
         #region Перегрузка операторов
+
         /// <summary>
-        /// Переопределенный оператор равенства
+        ///     Переопределенный оператор равенства
         /// </summary>
         /// <param name="a">Объект а</param>
         /// <param name="b"> Объект b</param>
@@ -187,8 +183,9 @@ namespace AGSoft.WorkCalendar.CoreLibrary
         {
             return a.GetHashCode() == b.GetHashCode();
         }
+
         /// <summary>
-        /// Переопределенный оператор неравенства
+        ///     Переопределенный оператор неравенства
         /// </summary>
         /// <param name="a">Объект а</param>
         /// <param name="b">Объект b</param>
@@ -199,7 +196,6 @@ namespace AGSoft.WorkCalendar.CoreLibrary
         }
 
         #endregion
-
 
         #region Методы
 
@@ -223,18 +219,17 @@ namespace AGSoft.WorkCalendar.CoreLibrary
         }
 
         #endregion
-
     }
+
     /// <summary>
-    /// Статический класс, изменяющий аттрибуты календарного дня
+    ///     Статический класс, изменяющий аттрибуты календарного дня
     /// </summary>
     public static class ChangeCalendarDay
     {
         public delegate void CallBack();
 
-
         /// <summary>
-        /// Изменяет аттрибуты календарного дня
+        ///     Изменяет аттрибуты календарного дня
         /// </summary>
         /// <param name="calendarDayDescription">Расшифровка календарного дня</param>
         /// <param name="calendarWorkDayAttribute">Аттрибуты календарного дня</param>
@@ -249,7 +244,7 @@ namespace AGSoft.WorkCalendar.CoreLibrary
             calendarDay.ChangeCaledarDayDescription(calendarDayDescription);
             calendarDay.CalendarDayComment = calendarDayComment;
             // Если указан делегат, то выполняем его
-         if(callBackMetod!= null) callBackMetod.Invoke();
+            if (callBackMetod != null) callBackMetod.Invoke();
         }
     }
 }

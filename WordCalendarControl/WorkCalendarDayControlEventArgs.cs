@@ -4,21 +4,22 @@ using AGSoft.WorkCalendar.CoreLibrary;
 namespace AGSoft.WorkCalendarControl
 {
     /// <summary>
-    /// Описание события изменений в рабочем календаре
+    ///     Описание события изменений в рабочем календаре
     /// </summary>
     public class WorkCalendarDayControlEventArgs : EventArgs
     {
         /// <summary>
-        /// Календарный день
-        /// </summary>
-        private CalendarDay CalendarDay { get; set; }
-        /// <summary>
-        /// Конструктор
+        ///     Конструктор
         /// </summary>
         /// <param name="calendarDay">Календарный день</param>
         public WorkCalendarDayControlEventArgs(CalendarDay calendarDay)
         {
             CalendarDay = calendarDay;
         }
+
+        /// <summary>
+        ///     Календарный день
+        /// </summary>
+        private CalendarDay CalendarDay { get; set; }
     }
 }

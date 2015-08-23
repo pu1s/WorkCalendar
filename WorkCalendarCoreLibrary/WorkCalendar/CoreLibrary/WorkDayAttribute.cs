@@ -6,6 +6,7 @@
 // Горин Александр 19.08.2015
 // Alex Gorin Software 2015
 //*********************************************************
+
 namespace AGSoft.WorkCalendar.CoreLibrary
 {
     /// <summary>
@@ -14,9 +15,10 @@ namespace AGSoft.WorkCalendar.CoreLibrary
     public enum WorkDayAttribute
     {
         /// <summary>
-        /// Значение не присвоено
+        ///     Значение не присвоено
         /// </summary>
         Empty = 0,
+
         /// <summary>
         ///     Рабочий день
         /// </summary>

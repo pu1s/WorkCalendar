@@ -6,17 +6,18 @@
 // Горин Александр 19.08.2015
 // Alex Gorin Software 2015
 //*********************************************************
+
 using System;
 
 namespace AGSoft.WorkCalendar.CoreLibrary
 {
     public static class HollydaysInfo
     {
-    /// <summary>
-    /// получение аттрибутов, расшифровки и комментариев из календаря по умолчанию
-    /// </summary>
-    /// <param name="date">Дата</param>
-    /// <param name="calendarDay">Ссылка на объект календарного дня</param>
+        /// <summary>
+        ///     получение аттрибутов, расшифровки и комментариев из календаря по умолчанию
+        /// </summary>
+        /// <param name="date">Дата</param>
+        /// <param name="calendarDay">Ссылка на объект календарного дня</param>
         public static void GetCalendarDayDescriptionAndAttribute(DateTime date, ref CalendarDay calendarDay)
         {
             // Преобразуем дату в строку без года

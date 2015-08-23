@@ -6,6 +6,7 @@
 // Горин Александр 19.08.2015
 // Alex Gorin Software 2015
 //*********************************************************
+
 using System.Collections.Generic;
 
 namespace AGSoft.WorkCalendar.CoreLibrary
@@ -14,17 +15,14 @@ namespace AGSoft.WorkCalendar.CoreLibrary
     {
         public static Dictionary<string, string> GetCalendar()
         {
-            
-             return new Dictionary<string, string>
+            return new Dictionary<string, string>
             {
                 {"01.01", "Новый год"},
                 {"23.02", "День защитника отечества"},
                 {"08.03", "Международный женский день"},
-                {"01.05", "Первое мая" },
-                {"09.05", "День победы" }
+                {"01.05", "Первое мая"},
+                {"09.05", "День победы"}
             };
         }
-        
-        
     }
 }
