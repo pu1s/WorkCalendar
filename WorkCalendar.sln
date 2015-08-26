@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkCalendarEditor", "WorkCalendar\WorkCalendarEditor.csproj", "{BE275405-8C82-4CCE-8CCD-867F8D70DB09}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkCalendarCoreLibrary", "WorkCalendarCoreLibrary\WorkCalendarCoreLibrary.csproj", "{C87D1898-5674-4498-8BC8-39D587BD92EE}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "agsal", "agal\agal.vcxproj", "{E708C60A-6CC0-4C69-AAB4-36815302FF86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{73496537-A358-4F25-B17C-34D739A48CED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,22 @@ Global
 		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Release|Win32.Build.0 = Release|Win32
 		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Release|x86.ActiveCfg = Release|Win32
 		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Release|x86.Build.0 = Release|Win32
+		{73496537-A358-4F25-B17C-34D739A48CED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73496537-A358-4F25-B17C-34D739A48CED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73496537-A358-4F25-B17C-34D739A48CED}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{73496537-A358-4F25-B17C-34D739A48CED}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{73496537-A358-4F25-B17C-34D739A48CED}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{73496537-A358-4F25-B17C-34D739A48CED}.Debug|Win32.Build.0 = Debug|Any CPU
+		{73496537-A358-4F25-B17C-34D739A48CED}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{73496537-A358-4F25-B17C-34D739A48CED}.Debug|x86.Build.0 = Debug|Any CPU
+		{73496537-A358-4F25-B17C-34D739A48CED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73496537-A358-4F25-B17C-34D739A48CED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73496537-A358-4F25-B17C-34D739A48CED}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{73496537-A358-4F25-B17C-34D739A48CED}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{73496537-A358-4F25-B17C-34D739A48CED}.Release|Win32.ActiveCfg = Release|Any CPU
+		{73496537-A358-4F25-B17C-34D739A48CED}.Release|Win32.Build.0 = Release|Any CPU
+		{73496537-A358-4F25-B17C-34D739A48CED}.Release|x86.ActiveCfg = Release|Any CPU
+		{73496537-A358-4F25-B17C-34D739A48CED}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
