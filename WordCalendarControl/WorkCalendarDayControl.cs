@@ -8,8 +8,7 @@ using AGSoft.WorkCalendarControl.Interfaces;
 namespace AGSoft.WorkCalendarControl
 {
     [ToolboxItem(true), ToolboxBitmap(typeof(Button))]
-    public partial class WorkCalendarDayControl : UserControl, IWorkCalendarDayControlProperty,
-        IWorkCalendarDayControlPaint
+    public partial class WorkCalendarDayControl : UserControl
     {
         public WorkCalendarDayControl()
         {
@@ -20,7 +19,11 @@ namespace AGSoft.WorkCalendarControl
             _hollydaysAndWeekendsDayColor = Color.Crimson;
             // Шрифты по умолчанию
             _font = base.Font;
+        }
 
+        public WorkCalendarDayControl(DateTime date) : this()
+        {
+            _calendarDay = new CalendarDay(date);
         }
 
         /// <summary>

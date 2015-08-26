@@ -56,6 +56,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -87,10 +88,6 @@
     <ProjectReference Include="..\WorkCalendarCoreLibrary\WorkCalendarCoreLibrary.csproj">
       <Project>{c87d1898-5674-4498-8bc8-39d587bd92ee}</Project>
       <Name>WorkCalendarCoreLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WorkCalendar\WorkCalendarEditor.csproj">
-      <Project>{be275405-8c82-4cce-8ccd-867f8d70db09}</Project>
-      <Name>WorkCalendarEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
