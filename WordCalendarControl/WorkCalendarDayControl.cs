@@ -3,12 +3,13 @@ using System.Drawing;
 using System.ComponentModel;
 using System.Windows.Forms;
 using AGSoft.WorkCalendar.CoreLibrary;
+using AGSoft.WorkCalendarControl;
 using AGSoft.WorkCalendarControl.Interfaces;
 
 namespace AGSoft.WorkCalendarControl
 {
     [ToolboxItem(true), ToolboxBitmap(typeof(Button))]
-    public partial class WorkCalendarDayControl : UserControl, IWorkCalendarDayControl
+    public partial class WorkCalendarDayControl : UserControl, IWorkCalendarDay, IWorkCalendarDayControlProp, IWorkCalendarDayControlPainter
     {
         public WorkCalendarDayControl()
         {

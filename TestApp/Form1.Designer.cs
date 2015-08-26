@@ -38,7 +38,7 @@
             this.workCalendarDayControl1.CalendarDay = ((AGSoft.WorkCalendar.CoreLibrary.CalendarDay)(resources.GetObject("workCalendarDayControl1.CalendarDay")));
             this.workCalendarDayControl1.HollydaysAndWeekendsDayColor = System.Drawing.Color.Crimson;
             this.workCalendarDayControl1.IsSelected = false;
-            this.workCalendarDayControl1.Location = new System.Drawing.Point(323, 60);
+            this.workCalendarDayControl1.Location = new System.Drawing.Point(316, 130);
             this.workCalendarDayControl1.MaximumSize = new System.Drawing.Size(20, 20);
             this.workCalendarDayControl1.Name = "workCalendarDayControl1";
             this.workCalendarDayControl1.OrdinaryDayFontColor = System.Drawing.Color.Black;
