@@ -8,14 +8,14 @@ using AGSoft.WorkCalendarControl.Interfaces;
 namespace AGSoft.WorkCalendarControl
 {
     [ToolboxItem(true), ToolboxBitmap(typeof(Button))]
-    public partial class WorkCalendarDayControl : UserControl
+    public partial class WorkCalendarDayControl : UserControl, IWorkCalendarDayControl
     {
         public WorkCalendarDayControl()
         {
             InitializeComponent();
             // Параметры цветов по умолчанию
             _backColor = base.BackColor;
-            _ordinaryDayFontColor = Color.Black;
+            _ordinaryDayDayFontColor = Color.Black;
             _hollydaysAndWeekendsDayColor = Color.Crimson;
             // Шрифты по умолчанию
             _font = base.Font;
@@ -102,13 +102,13 @@ namespace AGSoft.WorkCalendarControl
 
         public Color BgLeaveColor { get; set; }
 
-        public Color OrdinaryFontColor
+        public Color OrdinaryDayFontColor
         {
-            get { return _ordinaryDayFontColor; }
+            get { return _ordinaryDayDayFontColor; }
             set
             {
-                if (_ordinaryDayFontColor == value) return;
-                _ordinaryDayFontColor = value;
+                if (_ordinaryDayDayFontColor == value) return;
+                _ordinaryDayDayFontColor = value;
                 Invalidate();
             }
         }
@@ -137,7 +137,7 @@ namespace AGSoft.WorkCalendarControl
         /// </summary>
         private CalendarDay _calendarDay;
         private bool _isSelected;
-        private Color _ordinaryDayFontColor;
+        private Color _ordinaryDayDayFontColor;
         private Color _backColor;
         private Font _font ;
         private Color _hollydaysAndWeekendsDayColor;
