@@ -34,15 +34,18 @@
             // 
             // workCalendarDayControl1
             // 
-            this.workCalendarDayControl1.BgLeaveColor = System.Drawing.Color.Empty;
             this.workCalendarDayControl1.CalendarDay = ((AGSoft.WorkCalendar.CoreLibrary.CalendarDay)(resources.GetObject("workCalendarDayControl1.CalendarDay")));
-            this.workCalendarDayControl1.HollydaysAndWeekendsDayColor = System.Drawing.Color.Crimson;
-            this.workCalendarDayControl1.IsSelected = false;
-            this.workCalendarDayControl1.Location = new System.Drawing.Point(316, 130);
-            this.workCalendarDayControl1.MaximumSize = new System.Drawing.Size(20, 20);
+            this.workCalendarDayControl1.HollydaysAndWeekendsDayFontColor = System.Drawing.Color.Crimson;
+            this.workCalendarDayControl1.IsControlSelected = false;
+            this.workCalendarDayControl1.LeaveControlColor = System.Drawing.Color.Gainsboro;
+            this.workCalendarDayControl1.Location = new System.Drawing.Point(329, 96);
+            this.workCalendarDayControl1.Margin = new System.Windows.Forms.Padding(0);
+            this.workCalendarDayControl1.MaximumSize = new System.Drawing.Size(22, 18);
             this.workCalendarDayControl1.Name = "workCalendarDayControl1";
             this.workCalendarDayControl1.OrdinaryDayFontColor = System.Drawing.Color.Black;
-            this.workCalendarDayControl1.Size = new System.Drawing.Size(20, 20);
+            this.workCalendarDayControl1.SelectControlColor = System.Drawing.Color.Empty;
+            this.workCalendarDayControl1.ShortWorkDayColor = System.Drawing.Color.Blue;
+            this.workCalendarDayControl1.Size = new System.Drawing.Size(20, 18);
             this.workCalendarDayControl1.TabIndex = 0;
             // 
             // Form1
@@ -56,6 +59,7 @@
             this.ResumeLayout(false);
 
         }
+
 
         #endregion
 

@@ -9,10 +9,11 @@ namespace AGSoft.WorkCalendarControl.Interfaces
         /// <summary>
         ///     Свойство, показывающее выделен ли компонент
         /// </summary>
-        bool IsSelected { get; set; }
+        bool IsControlSelected { get; set; }
 
-        Color BgLeaveColor { get; set; }
+        Color LeaveControlColor { get; set; }
         Color OrdinaryDayFontColor { get; set; }
-        Color HollydaysAndWeekendsDayColor { get; set; }
+        Color ShortWorkDayColor { get; set; }
+        Color HollydaysAndWeekendsDayFontColor { get; set; }
     }
 }

@@ -42,9 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IWorkCalendarDay.cs" />
+    <Compile Include="Interfaces\GraphicStateManager.cs" />
+    <Compile Include="Interfaces\Painter.cs" />
+    <Compile Include="Interfaces\WorkCalendarDay.cs" />
     <Compile Include="Interfaces\IWorkCalendarDayControlProp.cs" />
-    <Compile Include="Interfaces\IWorkCalendarDayControlPainter.cs" />
+    <Compile Include="Interfaces\IWorkCalendarDayPainter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WorkCalendarDayControl.cs">
       <SubType>UserControl</SubType>
