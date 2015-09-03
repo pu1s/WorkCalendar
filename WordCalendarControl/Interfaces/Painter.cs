@@ -1,9 +1,23 @@
-
+/*
+==========================================================
+Этот файл является частью программы WorkCalendar
+отображения календаря для использования на производстве и 
+в бухгалтерском учете
+==========================================================
+Автор кода: Горин Александр pu1s@outlook.com
+Copyright © Alex Gorin Software 2015 All rights reserved
+==========================================================
+Программа распостраняется в соответствии с
+GNU GENERAL PUBLIC LICENSE
+Версия 2, июнь 1991г.
+Copyright (C) 1989, 1991 Free Software Foundation, Inc.
+59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
+==========================================================
+*/
 #define TEST
 
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
-
 using System.Drawing.Text;
 using AGSoft.WorkCalendar.CoreLibrary;
 
@@ -22,8 +36,7 @@ namespace AGSoft.WorkCalendarControl.Interfaces
         [SuppressMessage("ReSharper", "RedundantAssignment")]
         public override void DrawDate(WorkCalendarDayControl control, Graphics gfx)
         {
-           
-            GraphicStateManager.Save(gfx);
+            //GraphicStateManager.Save(gfx);
             // определяем какой день будем рисовать
             var day = control.CalendarDay.CalendarDayDescription;
             var dayAttribute = control.CalendarDay.CalendarDayAttribute;
@@ -59,6 +72,7 @@ namespace AGSoft.WorkCalendarControl.Interfaces
             // вычисляем размер надписи
             var sizefData = gfx.MeasureString(control.CalendarDay.CalendarDayDate.Date.Day.ToString(), font);
             // вычисляем горизонтальный отступ
+          
             var hOffset = ((control.Width-1) - sizefData.Width) / 2.0f; // не понимаю почему, но с единичкой ровно
             // вычисляем вертикальный размер
             var vOffset = ((control.Height-1) - sizefData.Height) / 2.0f;
@@ -70,27 +84,23 @@ namespace AGSoft.WorkCalendarControl.Interfaces
             // возвращаем качество прорисовки в исходное положение
             gfx.TextRenderingHint = TextRenderingHint.SystemDefault;
             brush.Dispose();
-            GraphicStateManager.Restore(gfx);
+            font.Dispose();
+
+            //GraphicStateManager.Restore(gfx);
         }
 
         public override void DrawMarker(WorkCalendarDayControl control, Graphics gfx)
         {
-            Color markerColor;
-
-            if (!string.IsNullOrEmpty(control.CalendarDay.CalendarDayComment))
-            {
-                 markerColor = control.GreenMarkerColor;
-            }
-
-            else
-            {
+            if (string.IsNullOrEmpty(control.CalendarDay.CalendarDayComment))
                 return;
-            }
+            var markerColor = control.GreenMarkerColor;
             using (var brush = new SolidBrush(markerColor))
             {
-                //gfx.SmoothingMode = SmoothingMode.AntiAlias;
-                gfx.FillRectangle( brush, new Rectangle(new Point(control.ClientRectangle.X+1, control.ClientRectangle.Y + 16),  new Size(18, 2)));
+                //GraphicStateManager.Save(gfx);
+                //gfx.SmoothingMode = SmoothingMode.HighQuality;
+                gfx.FillRectangle(brush, new Rectangle(new Point(control.ClientRectangle.X + 1, control.ClientRectangle.Y + 16), new Size(18, 2)));
                 //gfx.SmoothingMode= SmoothingMode.Default;
+                //GraphicStateManager.Restore(gfx);
             }
 
         }

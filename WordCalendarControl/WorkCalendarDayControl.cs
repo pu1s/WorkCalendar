@@ -1,4 +1,20 @@
-﻿#define DEBUG
+﻿/*
+==========================================================
+Этот файл является частью программы WorkCalendar
+отображения календаря для использования на производстве и 
+в бухгалтерском учете
+==========================================================
+Автор кода: Горин Александр pu1s@outlook.com
+Copyright © Alex Gorin Software 2015 All rights reserved
+==========================================================
+Программа распостраняется в соответствии с
+GNU GENERAL PUBLIC LICENSE
+Версия 2, июнь 1991г.
+Copyright (C) 1989, 1991 Free Software Foundation, Inc.
+59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
+==========================================================
+*/
+#define DEBUG
 using System;
 using System.Drawing;
 using System.ComponentModel;
@@ -13,7 +29,7 @@ namespace AGSoft.WorkCalendarControl
     {
         public WorkCalendarDayControl()
         {
-            
+
             InitializeComponent();
             // Параметры цветов по умолчанию
             // CLR говорит о исключениях при инициализации цвета поэтому так =>
@@ -37,43 +53,37 @@ namespace AGSoft.WorkCalendarControl
             //this.BackColor = Color.BurlyWood;
         }
 
-        private void InitializeColors()
-        {
-            _backColor = base.BackColor;
-            _leaveControlColor = Color.Gainsboro;
-            _ordinaryDayFontColor = Color.Black;
-            _hollydaysAndWeekendsDayFontFontColor = Color.Crimson;
-            _shortWorkDayFontColor = Color.Blue;
-            _greenMarkerColor = Color.Chartreuse;
-        }
+
 
         public WorkCalendarDayControl(DateTime date) : this()
         {
             _calendarDay = new CalendarDay(date);
         }
 
+
+
+        #region Свойства
         /// <summary>
         ///     Календарный день
-        /// </summary>
+        /// </summary> 
         public CalendarDay CalendarDay
         {
             get { return _calendarDay; }
             set
             {
-                if (_calendarDay != value)
-                {
-                    _calendarDay = value;
-                    Invalidate();
-                }
+                if (_calendarDay == value) return;
+                // если есть изменения то вызываем событие
+                OnWorkCalendarDayDataChanged();
+                // присваеваем новое значение
+                _calendarDay = value;
+                // перерисовываем
+                Invalidate();
             }
         }
 
         public override Color BackColor
         {
-            get
-            {
-                return _backColor;
-            }
+            get { return _backColor; }
             set
             {
                 if (_backColor == value) return;
@@ -81,6 +91,7 @@ namespace AGSoft.WorkCalendarControl
                 Invalidate();
             }
         }
+
         public override Font Font
         {
             get { return _font; }
@@ -107,17 +118,20 @@ namespace AGSoft.WorkCalendarControl
                 _isControlSelected = value;
                 Invalidate();
                 //Если свойство правда, то меняем значение свойства цвета фона
-                if (_isControlSelected) { BackColor = _selectControlColor; }
+                if (_isControlSelected)
+                {
+                    BackColor = _selectControlBackColor;
+                }
             }
         }
 
         public Color LeaveControlColor
         {
-            get { return _leaveControlColor; }
+            get { return _leaveControlBackColor; }
             set
             {
-                if (_leaveControlColor == value) return;
-                _leaveControlColor = value;
+                if (_leaveControlBackColor == value) return;
+                _leaveControlBackColor = value;
                 Invalidate();
             }
         }
@@ -144,13 +158,13 @@ namespace AGSoft.WorkCalendarControl
             }
         }
 
-        public Color SelectControlColor
+        public Color SelectControlBackColor
         {
-            get { return _selectControlColor; }
+            get { return _selectControlBackColor; }
             set
             {
-                if (_selectControlColor == value) return;
-                _selectControlColor = value;
+                if (_selectControlBackColor == value) return;
+                _selectControlBackColor = value;
                 Invalidate();
             }
         }
@@ -168,16 +182,38 @@ namespace AGSoft.WorkCalendarControl
 
         public Color GreenMarkerColor => _greenMarkerColor;
 
-        #region Методы
+        #endregion
 
+        #region Методы
+        /// <summary>
+        /// инициализация цветов компанета по умолчанию
+        /// </summary>
+        private void InitializeColors()
+        {
+            _backColor = base.BackColor;
+            _leaveControlBackColor = Color.Gainsboro;
+            _ordinaryDayFontColor = Color.Black;
+            _hollydaysAndWeekendsDayFontFontColor = Color.Crimson;
+            _shortWorkDayFontColor = Color.Blue;
+            _greenMarkerColor = Color.Chartreuse;
+        }
+        /*
+        для плавной смены цвета при наведении компанента
+        понадобится таймер private Timer _timer
+        */
+        /// <summary>
+        /// запускает таймер
+        /// </summary>
         private void StartTimer()
         {
-            _timer = new Timer {Interval = 40, Enabled = true};
+            _timer = new Timer { Interval = 50, Enabled = true };
             _timer.Start();
             _timer.Tick += _timer_Tick;
             _i = 0;
         }
-
+        /// <summary>
+        /// останавливает таймер
+        /// </summary>
         private void StopTimer()
         {
             if (_timer.Enabled)
@@ -187,18 +223,19 @@ namespace AGSoft.WorkCalendarControl
 
         #endregion
 
+        #region Переопределенные методы
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            Painter p = new Painter();
+            var p = new Painter();
             p.DrawMarker(control: this, gfx: e.Graphics);
             p.DrawDate(control: this, gfx: e.Graphics);
-           
+
         }
 
         protected override void OnPaintBackground(PaintEventArgs e)
         {
-            BgPainter bgPainter = new BgPainter();
+            var bgPainter = new BgPainter();
             bgPainter.DrawBg(control: this, gfx: e.Graphics);
         }
 
@@ -207,33 +244,70 @@ namespace AGSoft.WorkCalendarControl
             StopTimer();
             BackColor = base.BackColor;
         }
-       
+
 
         protected override void OnMouseEnter(EventArgs e)
         {
             StartTimer();
         }
 
-       
+        #endregion
+
+
+        #region Обработчики событий
+
         private void _timer_Tick(object sender, EventArgs e)
         {
             if (_i == 10)
             {
-               StopTimer();
+                StopTimer();
             }
             else
             {
-                var x = (int)25.5d*_i;
+                var x = (int)25.5d * _i;
                 BackColor = Color.FromArgb(x, LeaveControlColor);
                 _i++;
             }
 
         }
 
-        protected override void OnMouseHover(EventArgs e)
+        #endregion
+
+
+        //protected override void OnMouseHover(EventArgs e)
+        //{
+        //    base.OnMouseHover(e);
+        //}
+
+        #region Методы, вызывающие события
+        /// <summary>
+        /// Вызывает событие при изменении данных в структуре CalendarDay
+        /// </summary>
+        protected virtual void OnWorkCalendarDayDataChanged()
         {
-            base.OnMouseHover(e);
+            WorkCalendarDayDataChange?.Invoke(this, new WorkCalendarDayDataEventArgs(CalendarDay));
         }
+        /// <summary>
+        /// Вызывает событие при выделении компанента
+        /// </summary>
+        protected virtual void OnWorkcalendarDayControlSelect()
+        {
+            WorkcalendarDayControlSelect?.Invoke(this, EventArgs.Empty);
+        }
+
+        #endregion
+
+        #region События
+        /// <summary>
+        /// Событие, возникающее при изменении данных в структуре CalendarDay в компоненте
+        /// </summary>
+        public event EventHandler<WorkCalendarDayDataEventArgs> WorkCalendarDayDataChange;
+        /// <summary>
+        /// Событие, возникающее при выделении компонента
+        /// </summary>
+        public event EventHandler WorkcalendarDayControlSelect;
+
+        #endregion
 
         #region Поля
 
@@ -241,18 +315,53 @@ namespace AGSoft.WorkCalendarControl
         ///     структура календарный день
         /// </summary>
         private CalendarDay _calendarDay;
+        /// <summary>
+        /// выделен ли компанент
+        /// </summary>
         private bool _isControlSelected;
+        /// <summary>
+        /// цвет шрифта обычного дня
+        /// </summary>
         private Color _ordinaryDayFontColor;
+        /// <summary>
+        /// цвет подложки
+        /// </summary>
         private Color _backColor;
+        /// <summary>
+        /// шрифт компанента
+        /// </summary>
         private Font _font;
+        /// <summary>
+        /// цвет шрифта выходного или празничного дня
+        /// </summary>
         private Color _hollydaysAndWeekendsDayFontFontColor;
+        /// <summary>
+        /// цвет шрифта "короткого" рабочего дня
+        /// </summary>
         private Color _shortWorkDayFontColor;
+        /// <summary>
+        /// цвет маркера
+        /// </summary>
         private Color _greenMarkerColor;
-        private Color _selectControlColor;
-        private Color _leaveControlColor;
+        /// <summary>
+        /// цвет подложки выделенного компанента
+        /// </summary>
+        private Color _selectControlBackColor;
+        /// <summary>
+        /// цвет подложки компанента при наведении курсора
+        /// </summary>
+        private Color _leaveControlBackColor;
+        /// <summary>
+        /// таймер
+        /// </summary>
         private Timer _timer;
-        private int _i;
+        /// <summary>
+        /// переменная - счетчик
+        /// </summary>
+        private int _i; // переменная счетчик
 
         #endregion
+
+
     }
 }
