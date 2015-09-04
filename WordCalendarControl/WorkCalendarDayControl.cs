@@ -4,9 +4,12 @@
 отображения календаря для использования на производстве и 
 в бухгалтерском учете
 ==========================================================
-Автор кода: Горин Александр pu1s@outlook.com
+Автор кода программы: Горин Александр pu1s@outlook.com
 Copyright © Alex Gorin Software 2015 All rights reserved
 ==========================================================
+Программа является иннтеллектуальной собственностью 
+автора. Изменения в исходном коде программы должны
+согласовыватьяс с автором.
 Программа распостраняется в соответствии с
 GNU GENERAL PUBLIC LICENSE
 Версия 2, июнь 1991г.
@@ -14,22 +17,30 @@ Copyright (C) 1989, 1991 Free Software Foundation, Inc.
 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 ==========================================================
 */
+
 #define DEBUG
+
+#region Using
+
 using System;
-using System.Drawing;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 using AGSoft.WorkCalendar.CoreLibrary;
 using AGSoft.WorkCalendarControl.Interfaces;
 
+#endregion
+
+
 namespace AGSoft.WorkCalendarControl
 {
-    [ToolboxItem(true), ToolboxBitmap(typeof(Button))]
+    [ToolboxItem(true), ToolboxBitmap(typeof (TextBox))]
     public partial class WorkCalendarDayControl : UserControl, WorkCalendarDay, IWorkCalendarDayControlProp
     {
+        #region Конструкторы
+
         public WorkCalendarDayControl()
         {
-
             InitializeComponent();
             // Параметры цветов по умолчанию
             // CLR говорит о исключениях при инициализации цвета поэтому так =>
@@ -53,19 +64,36 @@ namespace AGSoft.WorkCalendarControl
             //this.BackColor = Color.BurlyWood;
         }
 
-
-
         public WorkCalendarDayControl(DateTime date) : this()
         {
             _calendarDay = new CalendarDay(date);
         }
 
+        #endregion
 
+        #region Обработчики событий
+
+        private void _timer_Tick(object sender, EventArgs e)
+        {
+            if (_i == 10)
+            {
+                StopTimer();
+            }
+            else
+            {
+                var x = (int) 25.5d*_i;
+                BackColor = Color.FromArgb(x, LeaveControlColor);
+                _i++;
+            }
+        }
+
+        #endregion
 
         #region Свойства
+
         /// <summary>
         ///     Календарный день
-        /// </summary> 
+        /// </summary>
         public CalendarDay CalendarDay
         {
             get { return _calendarDay; }
@@ -185,8 +213,9 @@ namespace AGSoft.WorkCalendarControl
         #endregion
 
         #region Методы
+
         /// <summary>
-        /// инициализация цветов компанета по умолчанию
+        ///     инициализация цветов компанета по умолчанию
         /// </summary>
         private void InitializeColors()
         {
@@ -197,22 +226,25 @@ namespace AGSoft.WorkCalendarControl
             _shortWorkDayFontColor = Color.Blue;
             _greenMarkerColor = Color.Chartreuse;
         }
+
         /*
         для плавной смены цвета при наведении компанента
         понадобится таймер private Timer _timer
         */
+
         /// <summary>
-        /// запускает таймер
+        ///     запускает таймер
         /// </summary>
         private void StartTimer()
         {
-            _timer = new Timer { Interval = 50, Enabled = true };
+            _timer = new Timer {Interval = 50, Enabled = true};
             _timer.Start();
             _timer.Tick += _timer_Tick;
             _i = 0;
         }
+
         /// <summary>
-        /// останавливает таймер
+        ///     останавливает таймер
         /// </summary>
         private void StopTimer()
         {
@@ -228,15 +260,14 @@ namespace AGSoft.WorkCalendarControl
         protected override void OnPaint(PaintEventArgs e)
         {
             var p = new Painter();
-            p.DrawMarker(control: this, gfx: e.Graphics);
-            p.DrawDate(control: this, gfx: e.Graphics);
-
+            p.DrawMarker(this, e.Graphics);
+            p.DrawDate(this, e.Graphics);
         }
 
         protected override void OnPaintBackground(PaintEventArgs e)
         {
             var bgPainter = new BgPainter();
-            bgPainter.DrawBg(control: this, gfx: e.Graphics);
+            bgPainter.DrawBg(this, e.Graphics);
         }
 
         protected override void OnMouseLeave(EventArgs e)
@@ -246,33 +277,9 @@ namespace AGSoft.WorkCalendarControl
         }
 
 
-        protected override void OnMouseEnter(EventArgs e)
-        {
-            StartTimer();
-        }
+        protected override void OnMouseEnter(EventArgs e) => StartTimer();
 
         #endregion
-
-
-        #region Обработчики событий
-
-        private void _timer_Tick(object sender, EventArgs e)
-        {
-            if (_i == 10)
-            {
-                StopTimer();
-            }
-            else
-            {
-                var x = (int)25.5d * _i;
-                BackColor = Color.FromArgb(x, LeaveControlColor);
-                _i++;
-            }
-
-        }
-
-        #endregion
-
 
         //protected override void OnMouseHover(EventArgs e)
         //{
@@ -280,15 +287,17 @@ namespace AGSoft.WorkCalendarControl
         //}
 
         #region Методы, вызывающие события
+
         /// <summary>
-        /// Вызывает событие при изменении данных в структуре CalendarDay
+        ///     Вызывает событие при изменении данных в структуре CalendarDay
         /// </summary>
         protected virtual void OnWorkCalendarDayDataChanged()
         {
             WorkCalendarDayDataChange?.Invoke(this, new WorkCalendarDayDataEventArgs(CalendarDay));
         }
+
         /// <summary>
-        /// Вызывает событие при выделении компанента
+        ///     Вызывает событие при выделении компанента
         /// </summary>
         protected virtual void OnWorkcalendarDayControlSelect()
         {
@@ -298,12 +307,14 @@ namespace AGSoft.WorkCalendarControl
         #endregion
 
         #region События
+
         /// <summary>
-        /// Событие, возникающее при изменении данных в структуре CalendarDay в компоненте
+        ///     Событие, возникающее при изменении данных в структуре CalendarDay в компоненте
         /// </summary>
         public event EventHandler<WorkCalendarDayDataEventArgs> WorkCalendarDayDataChange;
+
         /// <summary>
-        /// Событие, возникающее при выделении компонента
+        ///     Событие, возникающее при выделении компонента
         /// </summary>
         public event EventHandler WorkcalendarDayControlSelect;
 
@@ -315,53 +326,62 @@ namespace AGSoft.WorkCalendarControl
         ///     структура календарный день
         /// </summary>
         private CalendarDay _calendarDay;
+
         /// <summary>
-        /// выделен ли компанент
+        ///     выделен ли компанент
         /// </summary>
         private bool _isControlSelected;
+
         /// <summary>
-        /// цвет шрифта обычного дня
+        ///     цвет шрифта обычного дня
         /// </summary>
         private Color _ordinaryDayFontColor;
+
         /// <summary>
-        /// цвет подложки
+        ///     цвет подложки
         /// </summary>
         private Color _backColor;
+
         /// <summary>
-        /// шрифт компанента
+        ///     шрифт компанента
         /// </summary>
         private Font _font;
+
         /// <summary>
-        /// цвет шрифта выходного или празничного дня
+        ///     цвет шрифта выходного или празничного дня
         /// </summary>
         private Color _hollydaysAndWeekendsDayFontFontColor;
+
         /// <summary>
-        /// цвет шрифта "короткого" рабочего дня
+        ///     цвет шрифта "короткого" рабочего дня
         /// </summary>
         private Color _shortWorkDayFontColor;
+
         /// <summary>
-        /// цвет маркера
+        ///     цвет маркера
         /// </summary>
         private Color _greenMarkerColor;
+
         /// <summary>
-        /// цвет подложки выделенного компанента
+        ///     цвет подложки выделенного компанента
         /// </summary>
         private Color _selectControlBackColor;
+
         /// <summary>
-        /// цвет подложки компанента при наведении курсора
+        ///     цвет подложки компанента при наведении курсора
         /// </summary>
         private Color _leaveControlBackColor;
+
         /// <summary>
-        /// таймер
+        ///     таймер
         /// </summary>
         private Timer _timer;
+
         /// <summary>
-        /// переменная - счетчик
+        ///     переменная - счетчик
         /// </summary>
         private int _i; // переменная счетчик
 
         #endregion
-
-
     }
 }

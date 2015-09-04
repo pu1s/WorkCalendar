@@ -4,9 +4,12 @@
 отображения календаря для использования на производстве и 
 в бухгалтерском учете
 ==========================================================
-Автор кода: Горин Александр pu1s@outlook.com
+Автор кода программы: Горин Александр pu1s@outlook.com
 Copyright © Alex Gorin Software 2015 All rights reserved
 ==========================================================
+Программа является иннтеллектуальной собственностью 
+автора. Изменения в исходном коде программы должны
+согласовыватьяс с автором.
 Программа распостраняется в соответствии с
 GNU GENERAL PUBLIC LICENSE
 Версия 2, июнь 1991г.
@@ -36,6 +39,7 @@ namespace AGSoft.WorkCalendarControl
         /// <summary>
         ///     Календарный день
         /// </summary>
+        // ReSharper disable once UnusedAutoPropertyAccessor.Local
         private CalendarDay CalendarDay { get; set; }
     }
 }
