@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Interfaces\GraphicStateManager.cs" />
     <Compile Include="Interfaces\Painter.cs" />
     <Compile Include="Interfaces\WorkCalendarDay.cs" />

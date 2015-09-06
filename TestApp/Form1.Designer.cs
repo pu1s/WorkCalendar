@@ -38,7 +38,7 @@
             this.workCalendarDayControl1.HollydaysAndWeekendsDayFontColor = System.Drawing.Color.Crimson;
             this.workCalendarDayControl1.IsControlSelected = false;
             this.workCalendarDayControl1.LeaveControlColor = System.Drawing.Color.Gainsboro;
-            this.workCalendarDayControl1.Location = new System.Drawing.Point(329, 96);
+            this.workCalendarDayControl1.Location = new System.Drawing.Point(335, 139);
             this.workCalendarDayControl1.Margin = new System.Windows.Forms.Padding(0);
             this.workCalendarDayControl1.MaximumSize = new System.Drawing.Size(22, 18);
             this.workCalendarDayControl1.Name = "workCalendarDayControl1";

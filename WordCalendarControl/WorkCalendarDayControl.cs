@@ -31,7 +31,6 @@ using AGSoft.WorkCalendarControl.Interfaces;
 
 #endregion
 
-
 namespace AGSoft.WorkCalendarControl
 {
     [ToolboxItem(true), ToolboxBitmap(typeof (TextBox))]
@@ -42,6 +41,7 @@ namespace AGSoft.WorkCalendarControl
         public WorkCalendarDayControl()
         {
             InitializeComponent();
+
             // Параметры цветов по умолчанию
             // CLR говорит о исключениях при инициализации цвета поэтому так =>
             try
@@ -85,6 +85,11 @@ namespace AGSoft.WorkCalendarControl
                 BackColor = Color.FromArgb(x, LeaveControlColor);
                 _i++;
             }
+        }
+
+        private void WorkCalendarDayControl_MouseHover(object sender, EventArgs e)
+        {
+            ToolTipMessage();
         }
 
         #endregion
@@ -225,6 +230,40 @@ namespace AGSoft.WorkCalendarControl
             _hollydaysAndWeekendsDayFontFontColor = Color.Crimson;
             _shortWorkDayFontColor = Color.Blue;
             _greenMarkerColor = Color.Chartreuse;
+        }
+
+        private void ToolTipMessage()
+        {
+            if (string.IsNullOrEmpty(CalendarDay.CalendarDayComment) &&
+                CalendarDay.CalendarDayDescription == CalendarDayDescription.Empty)
+                return;
+            var str = TooltipCaptionDesc;
+            if (CalendarDay.CalendarDayAttribute == WorkDayAttribute.WorkDay)
+            {
+                str = str + TooltipWorkDay;
+            }
+            if (CalendarDay.CalendarDayAttribute == WorkDayAttribute.ShortDay)
+            {
+                str = str + TooltipWorkShortDay;
+            }
+            if (CalendarDay.CalendarDayAttribute == WorkDayAttribute.UnWorkDay)
+            {
+                str = str + TooltipUnworkDay;
+            }
+            if (CalendarDay.CalendarDayDescription == CalendarDayDescription.WeekendDay)
+            {
+                str = str + TooltipWeekendDay;
+            }
+            if (CalendarDay.CalendarDayDescription == CalendarDayDescription.HollyDay)
+            {
+                str = str + TooltipHollyDay;
+            }
+            str = str + TooltipCaptionComm;
+            str = str + CalendarDay.CalendarDayComment;
+            toolTipCalendarDayControl.InitialDelay = 500;
+            toolTipCalendarDayControl.ToolTipTitle = CalendarDay.CalendarDayDate.ToString("   d MMMM yyyy, dddd");
+            toolTipCalendarDayControl.Active = true;
+            toolTipCalendarDayControl.Show(str, this);
         }
 
         /*
@@ -375,12 +414,24 @@ namespace AGSoft.WorkCalendarControl
         /// <summary>
         ///     таймер
         /// </summary>
-        private Timer _timer;
+        private Timer _timer; 
 
         /// <summary>
         ///     переменная - счетчик
         /// </summary>
         private int _i; // переменная счетчик
+
+        #endregion
+
+        #region Константы
+
+        internal const string TooltipCaptionDesc = "Описание дня: ";
+        internal const string TooltipCaptionComm = "Комментарий: ";
+        internal const string TooltipWorkDay = "Рабочий день.\n";
+        internal const string TooltipWorkShortDay = "Короткий день.\n";
+        internal const string TooltipUnworkDay = "Нерабочий день.\n";
+        internal const string TooltipWeekendDay = "Выходной день.\n";
+        internal const string TooltipHollyDay = "Праздничный день.\n";
 
         #endregion
     }
