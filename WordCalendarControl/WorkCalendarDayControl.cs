@@ -74,7 +74,7 @@ namespace AGSoft.WorkCalendarControl
             var sizef = gfx.MeasureString(CalendarDay.CalendarDayDate.Date.ToString("dd"), Font);
             gfx.DrawString(CalendarDay.CalendarDayDate.Date.ToString("dd"), Font, new SolidBrush(Color.AliceBlue), new PointF(0, 0));
         }
-
+ccc v bj,]\56y5l
         public void DrawMarker(Graphics gfx)
         {
             throw new NotImplementedException();
