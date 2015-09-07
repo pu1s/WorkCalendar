@@ -17,7 +17,7 @@ namespace AGSoft.WorkCalendar.CoreLibrary
     ///     Базовая структура, описывающая календарный день
     /// </summary>
     [Serializable]
-    public struct CalendarDay : ICalendarDay
+    public struct CalendarDay
     {
         #region Поля
 
@@ -30,7 +30,7 @@ namespace AGSoft.WorkCalendar.CoreLibrary
         /// <summary>
         ///     Дата календарного дня
         /// </summary>
-        public DateTime CalendarDayDate { get; }
+        public DateTime CalendarDayDate { get; private set; }
 
         /// <summary>
         ///     Аттрибуты календарного дня (рабочий календарь)
@@ -55,7 +55,7 @@ namespace AGSoft.WorkCalendar.CoreLibrary
         /// <summary>
         ///     Индентификатор календарного дня
         /// </summary>
-        public int CalendarDayHandle { get; }
+        public int CalendarDayHandle { get; set; }
 
         #endregion
 

@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IWorkCalendarDay.cs" />
     <Compile Include="Interfaces\IWorkCalendarDayControlProp.cs" />
     <Compile Include="Interfaces\IWorkCalendarDayControlPainter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

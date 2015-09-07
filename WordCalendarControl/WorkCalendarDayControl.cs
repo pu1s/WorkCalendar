@@ -3,7 +3,6 @@ using System.Drawing;
 using System.ComponentModel;
 using System.Windows.Forms;
 using AGSoft.WorkCalendar.CoreLibrary;
-using AGSoft.WorkCalendarControl;
 using AGSoft.WorkCalendarControl.Interfaces;
 
 namespace AGSoft.WorkCalendarControl
@@ -143,5 +142,11 @@ namespace AGSoft.WorkCalendarControl
         private Color _hollydaysAndWeekendsDayColor;
 
         #endregion
+    }
+
+    public interface IWorkCalendarDay
+    {
+
+
     }
 }
