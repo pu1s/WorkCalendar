@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkCalendarEditor", "WorkCalendar\WorkCalendarEditor.csproj", "{BE275405-8C82-4CCE-8CCD-867F8D70DB09}"
 EndProject
@@ -11,9 +11,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkCalendarControl", "Word
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkCalendarCoreLibrary", "WorkCalendarCoreLibrary\WorkCalendarCoreLibrary.csproj", "{C87D1898-5674-4498-8BC8-39D587BD92EE}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "agsal", "agal\agal.vcxproj", "{E708C60A-6CC0-4C69-AAB4-36815302FF86}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{73496537-A358-4F25-B17C-34D739A48CED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{0D2A86F8-2B6B-4483-AE05-E424C0ABF228}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,20 +80,6 @@ Global
 		{C87D1898-5674-4498-8BC8-39D587BD92EE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{C87D1898-5674-4498-8BC8-39D587BD92EE}.Release|Win32.ActiveCfg = Release|Any CPU
 		{C87D1898-5674-4498-8BC8-39D587BD92EE}.Release|x86.ActiveCfg = Release|Any CPU
-		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
-		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Debug|Mixed Platforms.Build.0 = Debug|Win32
-		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Debug|Win32.ActiveCfg = Debug|Win32
-		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Debug|Win32.Build.0 = Debug|Win32
-		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Debug|x86.ActiveCfg = Debug|Win32
-		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Debug|x86.Build.0 = Debug|Win32
-		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Release|Any CPU.ActiveCfg = Release|Win32
-		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Release|Mixed Platforms.ActiveCfg = Release|Win32
-		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Release|Mixed Platforms.Build.0 = Release|Win32
-		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Release|Win32.ActiveCfg = Release|Win32
-		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Release|Win32.Build.0 = Release|Win32
-		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Release|x86.ActiveCfg = Release|Win32
-		{E708C60A-6CC0-4C69-AAB4-36815302FF86}.Release|x86.Build.0 = Release|Win32
 		{73496537-A358-4F25-B17C-34D739A48CED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{73496537-A358-4F25-B17C-34D739A48CED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73496537-A358-4F25-B17C-34D739A48CED}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU

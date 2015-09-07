@@ -7,14 +7,14 @@
 // Alex Gorin Software 2015
 //*********************************************************
 
-namespace AGSoft.WorkCalendar.CoreLibrary
+namespace AGSoft.WC.CoreLibrary
 
 
 {
     /// <summary>
     ///     Перечисление состояния календарного дня
     /// </summary>
-    public enum CalendarDayDescription
+    public enum WCDayDescription
     {
         /// <summary>
         ///     Значение не присвоено

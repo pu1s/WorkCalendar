@@ -7,12 +7,13 @@
 // Alex Gorin Software 2015
 //*********************************************************
 
-namespace AGSoft.WorkCalendar.CoreLibrary
+// ReSharper disable InconsistentNaming
+namespace AGSoft.WC.CoreLibrary
 {
     /// <summary>
     ///     Рабочая неделя
     /// </summary>
-    public enum CalendarWorkWeek
+    public enum WC_WorkWeek
     {
         /// <summary>
         ///     Пятидневная

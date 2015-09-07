@@ -11,17 +11,17 @@
 using System;
 using System.Globalization;
 
-namespace AGSoft.WorkCalendar.CoreLibrary
+namespace AGSoft.WC.CoreLibrary
 {
     /// <summary>
     ///     Базовая структура, описывающая календарный день
     /// </summary>
     [Serializable]
-    public struct CalendarDay
+    public struct WCDay
     {
         #region Поля
 
-        private string _calendarDayComment;
+        private string _wdDayComment;
 
         #endregion
 
@@ -30,32 +30,32 @@ namespace AGSoft.WorkCalendar.CoreLibrary
         /// <summary>
         ///     Дата календарного дня
         /// </summary>
-        public DateTime CalendarDayDate { get; private set; }
+        public DateTime WCDayDate { get; }
 
         /// <summary>
         ///     Аттрибуты календарного дня (рабочий календарь)
         /// </summary>
-        public WorkDayAttribute CalendarDayAttribute { get; private set; }
+        public WCDayAttribute WCDayAttribute { get; private set; }
 
         /// <summary>
         ///     Расшифровка календарного дня
         /// </summary>
-        public CalendarDayDescription CalendarDayDescription { get; private set; }
+        public WCDayDescription WCDayDescription { get; private set; }
 
         /// <summary>
         ///     Комметарий к текущему календарному дню
         /// </summary>
-        public string CalendarDayComment
+        public string WDDayComment
         {
-            get { return _calendarDayComment; }
-            set { _calendarDayComment = value ?? string.Empty; }
+            get { return _wdDayComment; }
+            set { _wdDayComment = value ?? string.Empty; }
             // если комметарий пустой, заполняем поле "пусой" строкой
         }
 
         /// <summary>
         ///     Индентификатор календарного дня
         /// </summary>
-        public int CalendarDayHandle { get; set; }
+        public int WCDayHandle { get; }
 
         #endregion
 
@@ -64,65 +64,70 @@ namespace AGSoft.WorkCalendar.CoreLibrary
         /// <summary>
         ///     Базовый конструктор
         /// </summary>
-        /// <param name="calendarDayDate">Дата календарного дня</param>
-        /// <param name="calendarDayAttribute">Аттрибуты календарного дня</param>
-        /// <param name="calendarDayDescription">Расшифровка параметров календарного дня</param>
+        /// <param name="wcDayDate">Дата календарного дня</param>
+        /// <param name="wcDayAttribute">Аттрибуты календарного дня</param>
+        /// <param name="wcDayDescription">Расшифровка параметров календарного дня</param>
         /// <param name="calendarDayComment">Комментарий</param>
-        public CalendarDay(DateTime calendarDayDate, WorkDayAttribute calendarDayAttribute,
-            CalendarDayDescription calendarDayDescription, string calendarDayComment) : this()
+        public WCDay(DateTime wcDayDate, WCDayAttribute wcDayAttribute,
+            WCDayDescription wcDayDescription, string calendarDayComment) : this()
         {
             // Вычисляем индентификатор календарного дня
-            CalendarDayHandle = CoreLibrary.CalendarDayHandle.SetCalendarDayHandle(calendarDayDate);
+            WCDayHandle = CoreLibrary.WCDayHandle.SetCalendarDayHandle(wcDayDate);
             // Присваеваем полям значения 
-            CalendarDayDate = calendarDayDate;
-            CalendarDayAttribute = calendarDayAttribute;
-            CalendarDayDescription = calendarDayDescription;
+            WCDayDate = wcDayDate;
+            WCDayAttribute = wcDayAttribute;
+            WCDayDescription = wcDayDescription;
             // Если комментарий не указан полю присваиватся пустая строка
-            _calendarDayComment = string.IsNullOrEmpty(calendarDayComment) ? string.Empty : calendarDayComment;
+            _wdDayComment = string.IsNullOrEmpty(calendarDayComment) ? string.Empty : calendarDayComment;
         }
 
 
         /// <summary>
         ///     Конструктор по дате календарного дня
         /// </summary>
-        /// <param name="calendarDayDate">Дате</param>
-        public CalendarDay(DateTime calendarDayDate) : this()
+        /// <param name="wcDayDate">Дате</param>
+        public WCDay(DateTime wcDayDate) : this()
         {
             // Вычисляем индентификатор календарного дня
-            CalendarDayHandle = CoreLibrary.CalendarDayHandle.SetCalendarDayHandle(calendarDayDate);
+            WCDayHandle = CoreLibrary.WCDayHandle.SetCalendarDayHandle(wcDayDate);
             // Присваеваем дату календарного дня
-            CalendarDayDate = calendarDayDate;
+            WCDayDate = wcDayDate;
+            CalculateWCDayAttribute(wcDayDate);
+        }
+
+        private void CalculateWCDayAttribute(DateTime wcDayDate)
+        {
             // Вычисляем аттрибуты календарного дня в календаре по умолчанию
             // Если этот день суббота или воскресенье, считаем его не рабочим днем
-            CalendarDayAttribute = calendarDayDate.DayOfWeek == DayOfWeek.Saturday &&
-                                   calendarDayDate.DayOfWeek == DayOfWeek.Sunday
-                ? WorkDayAttribute.UnWorkDay
+            WCDayAttribute = wcDayDate.DayOfWeek == DayOfWeek.Saturday &&
+                             wcDayDate.DayOfWeek == DayOfWeek.Sunday
+                ? WCDayAttribute.UnWorkDay
                 // В противном случае день - рабочий
-                : WorkDayAttribute.WorkDay;
+                : WCDayAttribute.WorkDay;
             //
             // Вычисляем аннотации к календарному дню
 
-            CalendarDayDescription = CalendarDayDescription.OrdinaryDay;
+            WCDayDescription = WCDayDescription.OrdinaryDay;
             // Комметарии в этом случае "пустые"
-            _calendarDayComment = string.Empty;
+            _wdDayComment = string.Empty;
         }
 
-        public CalendarDay(DateTime calendarDayDate, bool calculateHollydays) : this()
+        public WCDay(DateTime wcDayDate, bool calculateHollydays) : this()
         {
             // вычисляем уникальный индентификатор календарного дня
-            CalendarDayHandle = CoreLibrary.CalendarDayHandle.SetCalendarDayHandle(calendarDayDate);
+            WCDayHandle = CoreLibrary.WCDayHandle.SetCalendarDayHandle(wcDayDate);
             // вычисляем дату календарного дня
-            CalendarDayDate = calendarDayDate;
+            WCDayDate = wcDayDate;
             // Присваевем значение аттирибутов календарного дня 
             // Если этот день суббота или воскресенье, считаем его не рабочим днем
-            CalendarDayAttribute = calendarDayDate.DayOfWeek == DayOfWeek.Saturday &&
-                                   calendarDayDate.DayOfWeek == DayOfWeek.Sunday
-                ? WorkDayAttribute.UnWorkDay
+            WCDayAttribute = wcDayDate.DayOfWeek == DayOfWeek.Saturday &&
+                             wcDayDate.DayOfWeek == DayOfWeek.Sunday
+                ? WCDayAttribute.UnWorkDay
                 // В противном случае день - рабочий
-                : WorkDayAttribute.WorkDay;
+                : WCDayAttribute.WorkDay;
             if (calculateHollydays)
             {
-                HollydaysInfo.GetCalendarDayDescriptionAndAttribute(calendarDayDate, ref this);
+                WCHollydaysInfo.GetWCDayDescriptionAndAttribute(wcDayDate, ref this);
             }
         }
 
@@ -139,7 +144,8 @@ namespace AGSoft.WorkCalendar.CoreLibrary
         /// <filterpriority>2</filterpriority>
         public override int GetHashCode()
         {
-            return CalendarDayHandle != 0 ? CalendarDayHandle : 0;
+            if (WCDayHandle != null) return WCDayHandle;
+            return 0;
         }
 
         /// <summary>
@@ -151,8 +157,8 @@ namespace AGSoft.WorkCalendar.CoreLibrary
         /// <filterpriority>2</filterpriority>
         public override string ToString()
         {
-            return string.IsNullOrEmpty(CalendarDayDate.ToString(CultureInfo.CurrentCulture))
-                ? CalendarDayDate.ToLongDateString()
+            return string.IsNullOrEmpty(WCDayDate.ToString(CultureInfo.CurrentCulture))
+                ? WCDayDate.ToLongDateString()
                 : "Undefined Date";
         }
 
@@ -166,7 +172,7 @@ namespace AGSoft.WorkCalendar.CoreLibrary
         /// <filterpriority>2</filterpriority>
         public override bool Equals(object obj)
         {
-            return obj != null || GetType() == typeof (CalendarDay);
+            return obj != null || GetType() == typeof (WCDay);
         }
 
         #endregion
@@ -179,7 +185,7 @@ namespace AGSoft.WorkCalendar.CoreLibrary
         /// <param name="a">Объект а</param>
         /// <param name="b"> Объект b</param>
         /// <returns>Возвращает истина, если совпадают хеши объектов, и ложь - если нет </returns>
-        public static bool operator ==(CalendarDay a, CalendarDay b)
+        public static bool operator ==(WCDay a, WCDay b)
         {
             return a.GetHashCode() == b.GetHashCode();
         }
@@ -190,7 +196,7 @@ namespace AGSoft.WorkCalendar.CoreLibrary
         /// <param name="a">Объект а</param>
         /// <param name="b">Объект b</param>
         /// <returns>Возвращает истина, если совпадают хеши объектов, и ложь - если нет</returns>
-        public static bool operator !=(CalendarDay a, CalendarDay b)
+        public static bool operator !=(WCDay a, WCDay b)
         {
             return !(a == b);
         }
@@ -203,9 +209,9 @@ namespace AGSoft.WorkCalendar.CoreLibrary
         ///     Изменяет аттрибут календарного лня календаря
         /// </summary>
         /// <param name="calendarWorkDayAttribute">Аттрибут календарного дня</param>
-        public void ChangeCalendarDayAttribute(WorkDayAttribute calendarWorkDayAttribute)
+        public void ChangeCalendarDayAttribute(WCDayAttribute calendarWorkDayAttribute)
         {
-            CalendarDayAttribute = calendarWorkDayAttribute;
+            WCDayAttribute = calendarWorkDayAttribute;
         }
 
 
@@ -213,9 +219,9 @@ namespace AGSoft.WorkCalendar.CoreLibrary
         ///     Изменяет описание календарного дня
         /// </summary>
         /// <param name="calendarDayDescription">Описание календарного дня</param>
-        public void ChangeCaledarDayDescription(CalendarDayDescription calendarDayDescription)
+        public void ChangeCaledarDayDescription(WCDayDescription calendarDayDescription)
         {
-            CalendarDayDescription = calendarDayDescription;
+            WCDayDescription = calendarDayDescription;
         }
 
         #endregion
@@ -236,13 +242,13 @@ namespace AGSoft.WorkCalendar.CoreLibrary
         /// <param name="calendarDayComment">Комментарий</param>
         /// <param name="calendarDay">структура, календарный день, переданная по ссылке</param>
         /// <param name="callBackMetod">Метод, запускаемый при изменнени аттрибутов календарного дня</param>
-        public static void Change(CalendarDayDescription calendarDayDescription,
-            WorkDayAttribute calendarWorkDayAttribute,
-            string calendarDayComment, ref CalendarDay calendarDay, CallBack callBackMetod)
+        public static void Change(WCDayDescription calendarDayDescription,
+            WCDayAttribute calendarWorkDayAttribute,
+            string calendarDayComment, ref WCDay calendarDay, CallBack callBackMetod)
         {
             calendarDay.ChangeCalendarDayAttribute(calendarWorkDayAttribute);
             calendarDay.ChangeCaledarDayDescription(calendarDayDescription);
-            calendarDay.CalendarDayComment = calendarDayComment;
+            calendarDay.WDDayComment = calendarDayComment;
             // Если указан делегат, то выполняем его
             if (callBackMetod != null) callBackMetod.Invoke();
         }

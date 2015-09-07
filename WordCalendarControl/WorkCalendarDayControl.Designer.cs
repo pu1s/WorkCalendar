@@ -1,4 +1,4 @@
-﻿namespace AGSoft.WorkCalendarControl
+﻿namespace AGSoft.WCControl
 {
     partial class WorkCalendarDayControl
     {

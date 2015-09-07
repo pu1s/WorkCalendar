@@ -1,7 +1,8 @@
 ﻿using System;
-using AGSoft.WorkCalendar.CoreLibrary;
+using AGSoft.WC.CoreLibrary;
 
-namespace AGSoft.WorkCalendarControl
+
+namespace AGSoft.WCControl
 {
     /// <summary>
     ///     Описание события изменений в рабочем календаре
@@ -12,7 +13,7 @@ namespace AGSoft.WorkCalendarControl
         ///     Конструктор
         /// </summary>
         /// <param name="calendarDay">Календарный день</param>
-        public WorkCalendarDayControlEventArgs(CalendarDay calendarDay)
+        public WorkCalendarDayControlEventArgs(WCDay calendarDay)
         {
             CalendarDay = calendarDay;
         }
@@ -20,6 +21,6 @@ namespace AGSoft.WorkCalendarControl
         /// <summary>
         ///     Календарный день
         /// </summary>
-        private CalendarDay CalendarDay { get; set; }
+        private WCDay CalendarDay { get; set; }
     }
 }

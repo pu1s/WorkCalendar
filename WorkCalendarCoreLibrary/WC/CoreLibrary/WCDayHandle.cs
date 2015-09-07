@@ -9,12 +9,12 @@
 
 using System;
 
-namespace AGSoft.WorkCalendar.CoreLibrary
+namespace AGSoft.WC.CoreLibrary
 {
     /// <summary>
     ///     Определяет уникальность календарного дня
     /// </summary>
-    public static class CalendarDayHandle
+    public static class WCDayHandle
     {
         /// <summary>
         ///     Опеределяет уникальный индентификатор календарного дня

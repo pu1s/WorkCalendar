@@ -1,6 +1,6 @@
 using System.Drawing;
 
-namespace AGSoft.WorkCalendarControl.Interfaces
+namespace AGSoft.WCControl.Interfaces
 {
     public interface IWorkCalendarDayControlPainter
     {

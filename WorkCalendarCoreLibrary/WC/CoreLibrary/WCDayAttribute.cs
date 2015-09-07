@@ -7,12 +7,12 @@
 // Alex Gorin Software 2015
 //*********************************************************
 
-namespace AGSoft.WorkCalendar.CoreLibrary
+namespace AGSoft.WC.CoreLibrary
 {
     /// <summary>
     ///     Перечисление состояния рабочих дней
     /// </summary>
-    public enum WorkDayAttribute
+    public enum WCDayAttribute
     {
         /// <summary>
         ///     Значение не присвоено

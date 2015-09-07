@@ -8,17 +8,18 @@
 //*********************************************************
 
 using System;
+using AGSoft.WorkCalendar.CoreLibrary;
 
-namespace AGSoft.WorkCalendar.CoreLibrary
+namespace AGSoft.WC.CoreLibrary
 {
-    public static class HollydaysInfo
+    public static class WCHollydaysInfo
     {
         /// <summary>
         ///     получение аттрибутов, расшифровки и комментариев из календаря по умолчанию
         /// </summary>
         /// <param name="date">Дата</param>
         /// <param name="calendarDay">Ссылка на объект календарного дня</param>
-        public static void GetCalendarDayDescriptionAndAttribute(DateTime date, ref CalendarDay calendarDay)
+        public static void GetWCDayDescriptionAndAttribute(DateTime date, ref WCDay calendarDay)
         {
             // Преобразуем дату в строку без года
             var str = date.ToString("dd") + "." + date.ToString("MM");
@@ -27,13 +28,13 @@ namespace AGSoft.WorkCalendar.CoreLibrary
             // проверяем на наличие в календаре текущей даты
             if (!dic.ContainsKey(str)) return;
             // если она есть, меняеем аттрибуты
-            calendarDay.ChangeCalendarDayAttribute(WorkDayAttribute.UnWorkDay);
+            calendarDay.ChangeCalendarDayAttribute(WCDayAttribute.UnWorkDay);
             // описание
-            calendarDay.ChangeCaledarDayDescription(CalendarDayDescription.HollyDay);
+            calendarDay.ChangeCaledarDayDescription(WCDayDescription.HollyDay);
             string value;
             dic.TryGetValue(str, out value);
             // и комментарий
-            calendarDay.CalendarDayComment = value;
+            calendarDay.WDDayComment = value;
         }
     }
 }

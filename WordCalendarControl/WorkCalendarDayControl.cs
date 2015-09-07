@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Drawing;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
-using AGSoft.WorkCalendar.CoreLibrary;
-using AGSoft.WorkCalendarControl.Interfaces;
+using AGSoft.WC.CoreLibrary;
+using AGSoft.WCControl.Interfaces;
 
-namespace AGSoft.WorkCalendarControl
+
+namespace AGSoft.WCControl
 {
     [ToolboxItem(true), ToolboxBitmap(typeof(Button))]
     public partial class WorkCalendarDayControl : UserControl, IWorkCalendarDay, IWorkCalendarDayControlProp, IWorkCalendarDayControlPainter
@@ -23,13 +24,13 @@ namespace AGSoft.WorkCalendarControl
 
         public WorkCalendarDayControl(DateTime date) : this()
         {
-            _calendarDay = new CalendarDay(date);
+            _calendarDay = new WCDay(date);
         }
 
         /// <summary>
         ///     Календарный день
         /// </summary>
-        public CalendarDay CalendarDay
+        public WCDay CalendarDay
         {
             get { return _calendarDay; }
             set
@@ -70,8 +71,8 @@ namespace AGSoft.WorkCalendarControl
 
         public void DrawDate(Graphics gfx)
         {
-            var sizef = gfx.MeasureString(CalendarDay.CalendarDayDate.Date.ToString("dd"), Font);
-            gfx.DrawString(CalendarDay.CalendarDayDate.Date.ToString("dd"), Font, new SolidBrush(Color.AliceBlue), new PointF(0, 0));
+            var sizef = gfx.MeasureString(CalendarDay.WCDayDate.Date.ToString("dd"), Font);
+            gfx.DrawString(s: CalendarDay.WCDayDate.Date.ToString("dd"), font: Font, brush: new SolidBrush(Color.AliceBlue), point: new PointF(0, 0));
         }
         public void DrawMarker(Graphics gfx)
         {
@@ -134,7 +135,7 @@ namespace AGSoft.WorkCalendarControl
         /// <summary>
         ///     структура календарный день
         /// </summary>
-        private CalendarDay _calendarDay;
+        private WCDay _calendarDay;
         private bool _isSelected;
         private Color _ordinaryDayDayFontColor;
         private Color _backColor;
